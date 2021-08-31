@@ -10,24 +10,22 @@ body,
   width: 100%;
 }
 
-body, .esri-attribution {
+.esri-attribution {
     background-color: #d7d1c2;
 }
 
 .esri-zoom {
   background-color: transparent!important;
   box-shadow: none!important;
+  position: absolute;
+  z-index: 2;
+  top: 30px;
 }
 
 .esri-zoom .esri-widget--button {
 border-radius: 50% !important;
-box-shadow: 0 1px 2px rgb(0 0 0 / 30%)!important;
+box-shadow: 0 4px 10px rgb(0 0 0 / 30%)!important;
 background-color: #fdfeff!important;
 margin-bottom: 5px!important;
 }
 
-.map-container {
-height: 100vh;
-width: 100vw;
-max-width: 950px;
-}

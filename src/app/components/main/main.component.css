@@ -1,2 +1,28 @@
 
 
+.main-container {
+    height: 80vh;
+    width: 100vw;
+    max-width: 1050px;
+    position: relative;
+    background-color: #d7d1c2;
+}
+
+.img-cutout {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    pointer-events:none;
+}
+
+.map-container {
+    position: absolute;
+    z-index: 0;
+    left: 35px;
+    top: 30px;
+    height: calc(100% - 30px);
+    width: calc(100% - 70px);
+}

@@ -4,6 +4,7 @@ import TileLayer from '@arcgis/core/layers/TileLayer';
 import Map from '@arcgis/core/Map';
 import MapView from '@arcgis/core/views/MapView';
 import Basemap from '@arcgis/core/Basemap';
+import { Store } from 'src/app/data/store.data';
 
 @Component({
   selector: 'app-main',
@@ -12,7 +13,7 @@ import Basemap from '@arcgis/core/Basemap';
 })
 export class MainComponent implements OnInit, AfterViewInit {
 
-  constructor() { }
+  constructor(private store: Store) { }
 
   ngOnInit(): void {
 
@@ -30,7 +31,8 @@ export class MainComponent implements OnInit, AfterViewInit {
             new TileLayer({
               url: "https://tiles.arcgis.com/tiles/nGt4QxSblgDfeJn9/arcgis/rest/services/VintageShadedRelief/MapServer",
               title: "Basemap"
-            })
+            }),
+            
           ],
           title: "basemap",
           id: "basemap"
@@ -57,6 +59,7 @@ export class MainComponent implements OnInit, AfterViewInit {
         //Point Layer
         const pointLayer = new GeoJSONLayer({
             url: "https://slowcamino.com/custom/pins.php",
+            outFields: ["*"],
             copyright: "Slow Camino",
             popupTemplate: template,
             renderer: <any>renderer
@@ -74,6 +77,10 @@ export class MainComponent implements OnInit, AfterViewInit {
           map: map,
           center: [0, 15], // Longitude, latitude
           zoom: 2, // Zoom level
+          constraints: {
+            minZoom: 2,
+            rotationEnabled: false,          
+          },
           container: "map-container",
           popup: {
             dockEnabled: true,
@@ -85,8 +92,12 @@ export class MainComponent implements OnInit, AfterViewInit {
           }
         });
 
-
-        
+        //Set the selection
+        var _co = this;
+        view.popup.watch("selectedFeature", function (graphic) {
+          _co.store.SetLocation(graphic);
+        });
+          
   }
 
 }
