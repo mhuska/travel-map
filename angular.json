@@ -17,6 +17,79 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "crypto-js",
+              "rxjs/Subject",
+              "rxjs/add/operator/*",
+              "rxjs/add/operator/map",
+              "rxjs/Observable",
+              "rxjs/Rx",
+              "rxjs/add/observable/interval",
+              "arcgis/core/intl/moment.js",
+              "moment/locale/zh-tw.js",
+              "moment/locale/zh-mo.js",
+              "moment/locale/zh-cn.js",
+              "moment/locale/vi.js",
+              "moment/locale/uk.js",
+              "moment/locale/zh-hk.js",
+              "moment/locale/th.js",
+              "moment/locale/sv.js",
+              "moment/locale/tr.js",
+              "moment/locale/sr.js",
+              "moment/locale/sk.js",
+              "moment/locale/sr-cyrl.js",
+              "moment/locale/sl.js",
+              "moment/locale/ru.js",
+              "moment/locale/ro.js",
+              "moment/locale/pt-br.js",
+              "moment/locale/pt.js",
+              "moment/locale/pl.js",
+              "moment/locale/nl-be.js",
+              "moment/locale/nl.js",
+              "moment/locale/nb.js",
+              "moment/locale/lv.js",
+              "moment/locale/lt.js",
+              "moment/locale/ko.js",
+              "moment/locale/ja.js",
+              "moment/locale/it-ch.js",
+              "moment/locale/it.js",
+              "moment/locale/id.js",
+              "moment/locale/hu.js",
+              "moment/locale/hr.js",
+              "moment/locale/fr-ch.js",
+              "moment/locale/he.js",
+              "moment/locale/en-sg.js",
+              "moment/locale/es-do.js",
+              "moment/locale/es-mx.js",
+              "moment/locale/es-us.js",
+              "moment/locale/es.js",
+              "moment/locale/et.js",
+              "moment/locale/fi.js",
+              "moment/locale/fr-ca.js",
+              "moment/locale/fr.js",
+              "moment/locale/en-nz.js",
+              "moment/locale/en-in.js",
+              "moment/locale/en-il.js",
+              "moment/locale/en-ie.js",
+              "moment/locale/en-gb.js",
+              "moment/locale/en-ca.js",
+              "moment/locale/en-au.js",
+              "moment/locale/el.js",
+              "moment/locale/de-ch.js",
+              "moment/locale/de-at.js",
+              "moment/locale/de.js",
+              "moment/locale/cs.js",
+              "moment/locale/da.js",
+              "moment/locale/ca.js",
+              "moment/locale/bs.js",
+              "moment/locale/ar-tn.js",
+              "moment/locale/ar-sa.js",
+              "moment/locale/ar-ma.js",
+              "moment/locale/ar-ly.js",
+              "moment/locale/ar-kw.js",
+              "moment/locale/ar-dz.js",
+              "moment/locale/ar.js"
+            ],
             "outputPath": "dist/vintage-travel-map",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -24,7 +97,12 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/@arcgis/core/assets",
+                "output": "/assets/"
+              }
             ],
             "styles": [
               "src/styles.css"
@@ -33,25 +111,20 @@
           },
           "configurations": {
             "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
-                }
-              ],
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "optimization": true,
+              "sourceMap": false,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
             },
             "development": {
               "buildOptimizer": false,
@@ -91,7 +164,12 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/@arcgis/core/assets",
+                "output": "/assets/"
+              }
             ],
             "styles": [
               "src/styles.css"

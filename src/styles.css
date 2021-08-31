@@ -1,1 +1,33 @@
+@import "https://js.arcgis.com/4.19/@arcgis/core/assets/esri/themes/light/main.css";
+
 /* You can add global styles to this file, and also import other style files */
+html,
+body,
+#viewDiv {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+body, .esri-attribution {
+    background-color: #d7d1c2;
+}
+
+.esri-zoom {
+  background-color: transparent!important;
+  box-shadow: none!important;
+}
+
+.esri-zoom .esri-widget--button {
+border-radius: 50% !important;
+box-shadow: 0 1px 2px rgb(0 0 0 / 30%)!important;
+background-color: #fdfeff!important;
+margin-bottom: 5px!important;
+}
+
+.map-container {
+height: 100vh;
+width: 100vw;
+max-width: 950px;
+}
