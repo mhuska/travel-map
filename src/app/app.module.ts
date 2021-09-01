@@ -4,11 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { MainComponent } from './components/main/main.component';
 import { SharedDataModule } from './data/shared.store.module';
+import { PostcardComponent } from './components/postcard/postcard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent
+    MainComponent,
+    PostcardComponent
   ],
   imports: [
     BrowserModule,

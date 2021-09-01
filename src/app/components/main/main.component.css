@@ -21,8 +21,8 @@
 .map-container {
     position: absolute;
     z-index: 0;
-    left: 35px;
-    top: 30px;
-    height: calc(100% - 30px);
-    width: calc(100% - 70px);
+    left: 3%;
+    top: 5%;
+    height:93%;
+    width: 94%;
 }

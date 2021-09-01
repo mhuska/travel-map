@@ -1,4 +1,5 @@
 @import "https://js.arcgis.com/4.19/@arcgis/core/assets/esri/themes/light/main.css";
+@import "https://fonts.googleapis.com/css2?family=Parisienne&display=swap";
 
 /* You can add global styles to this file, and also import other style files */
 html,
@@ -11,7 +12,26 @@ body,
 }
 
 .esri-attribution {
-    background-color: #d7d1c2;
+    background-color: transparent;
+    width: 230px;
+    word-wrap: normal;
+    height: max-content;
+    bottom: 8%!important;
+    top:unset;
+    display:block;
+    font-family: 'Parisienne', cursive;
+    font-size: 18px;
+    line-height: 20px;
+    pointer-events: none!important;
+}
+
+.esri-attribution__sources {
+  overflow:unset;
+  white-space:normal;
+}
+
+.esri-attribution__powered-by {
+  text-align: left;
 }
 
 .esri-zoom {

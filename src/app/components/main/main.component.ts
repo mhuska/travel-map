@@ -44,16 +44,28 @@ export class MainComponent implements OnInit, AfterViewInit {
           content: "<img src='{Image}' width='200px'><a href='{ArticleURL}' target='_blank'>read more...</a>",
         };
         
+        const marker_size = "22px";
+
         //Point Renderer
         const renderer = {
-          type: "simple",
+          type: "unique-value",
           field: "Marker",
-          symbol: {
-              type: "simple-marker",
-              style: "x",
-              color: "red",
-              outline: { width: 6, color: [155, 6, 6, 1] }
-          }
+          defaultSymbol: {
+            type: "picture-marker",              
+            url: "./assets/symbols/pirate-x-18.png",
+            width: marker_size,
+            height: marker_size,
+          },
+          uniqueValueInfos: [{
+            value: "Red",
+            symbol: {
+              type: "picture-marker",
+              url: "./assets/symbols/pirate-x-18.png",
+              width: marker_size,
+              height: marker_size,
+            },
+            label: "Red"
+          }]
         };
         
         //Point Layer
