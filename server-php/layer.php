@@ -38,9 +38,11 @@
                         "Scale":"'.GetMeta("scale_dependency").'",
                         "Marker":"'.GetMeta("marker_type").'",
                         "ArticleURL":"'.GetMeta("article_url").'",
-                        "Content":"'.GetMeta("popup_content").'"
-                        
+                        "Content":"'.GetMeta("popup_content").'",
+                        "Articles":['.ParsePostIdArrayString(GetMeta("article")).'],
+                        "Gallery":['.ParsePostIdArrayString(GetMeta("photo_gallery")).']
                     }}';
+                    
                     
                     //concatenate the feature
                     $json = $json.$feature;
@@ -80,6 +82,23 @@
             $value = "";
         }
         return $value;
+    }
+    
+    function ParsePostIdArrayString($text) {
+        //a:1:{i:0;s:3:"711";}
+        //a:2:{i:0;s:3:"733";i:1;s:3:"757";}
+        $result = "";
+        $parts = explode(':"', $text);
+        $count = count($parts);
+        for ($i=1; $i<=$count; $i++ ) {
+            $part = $parts[$i];
+            $id = substr($part, 0, strpos($part, '"'));
+            if ($i > 1 && $i<$count) {
+                $result = $result.",";
+            }
+            $result = $result.$id;
+        }
+        return $result;
     }
 ?>
 
