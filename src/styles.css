@@ -1,6 +1,7 @@
 @import "https://js.arcgis.com/4.19/@arcgis/core/assets/esri/themes/light/main.css";
 @import "https://fonts.googleapis.com/css2?family=Parisienne&display=swap";
 @import "https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap";
+@import "~swiper/swiper-bundle";
 
 /* You can add global styles to this file, and also import other style files */
 html,
@@ -53,4 +54,23 @@ margin-bottom: 5px!important;
 /* hides the default ESRI popup */
 .esri-popup {
   display:none!important;
+}
+
+/* Swiper */
+.swiper {
+  width: calc(100% - 10px);
+  height: auto;
+  margin: 50px auto;
+
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  padding: 10px;
+
+
+  z-index: 10;
+}
+
+.swiper-slide {
+  background: transparent;
 }

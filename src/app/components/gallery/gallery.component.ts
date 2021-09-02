@@ -1,7 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MapLocation } from '../../models/location.model';
 import { Store } from '../../data/store.data';
 import { IGalleryItem } from '../../models/gallery-item.model';
+import { SwiperComponent } from "swiper/angular";
+
+// install Swiper modules
+// import Swiper core and required components
+import SwiperCore, {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  Virtual,
+  Zoom,
+  Autoplay,
+  Thumbs,
+  Controller,
+  SwiperOptions
+} from "swiper";
+
+// install Swiper components
+SwiperCore.use([
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  Virtual,
+  Zoom,
+  Autoplay,
+  Thumbs,
+  Controller
+]);
 
 @Component({
   selector: 'app-gallery',
@@ -10,10 +39,20 @@ import { IGalleryItem } from '../../models/gallery-item.model';
 })
 export class GalleryComponent implements OnInit {
 
+  //Swiper Config
+  //https://swiperjs.com/angular
+  config: SwiperOptions = {
+    navigation: true,
+    pagination: { clickable: true },
+    scrollbar: { draggable: true },
+  };
+
+  //Easy to access selected content
   get content(): MapLocation | null {
     return this.store.CurrentLocation;
   }
 
+  //The items to show in the Swiper
   get items(): IGalleryItem[] {
     let result: IGalleryItem[] = [];
     if (this.content) {

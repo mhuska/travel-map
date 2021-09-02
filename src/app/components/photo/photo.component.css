@@ -1,0 +1,10 @@
+.photo-wrapper {
+    width: max-content;
+    height: 300px;
+    margin: auto;
+}
+
+img {
+    height: 100%;    
+    width: auto;
+}

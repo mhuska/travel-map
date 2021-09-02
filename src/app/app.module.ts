@@ -1,5 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from "@angular/forms";
+import { CommonModule } from '@angular/common';
+
+
+import { SwiperModule } from "swiper/angular";
+import 'swiper/css/bundle';
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './components/main/main.component';
@@ -8,16 +14,20 @@ import { PostcardComponent } from './components/postcard/postcard.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { PhotoComponent } from './components/photo/photo.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     PostcardComponent,
     GalleryComponent,
-    PhotoComponent
+    PhotoComponent,
   ],
   imports: [
     BrowserModule,
+    CommonModule,
+    FormsModule,
+    SwiperModule,
     SharedDataModule.forRoot(),
   ],
   providers: [],
