@@ -1,5 +1,4 @@
-<swiper 
-        [config]="config"
+<swiper [effect]="'cards'"
         *ngIf="content">
 
     <ng-template swiperSlide *ngFor="let item of items; trackBy: trackByFn" let-data>

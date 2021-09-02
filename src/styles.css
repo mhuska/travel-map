@@ -58,19 +58,22 @@ margin-bottom: 5px!important;
 
 /* Swiper */
 .swiper {
-  width: calc(100% - 10px);
+  width: calc(100% - 20px);
   height: auto;
-  margin: 50px auto;
+  margin: 5px auto;
 
   position: absolute;
   left: 10px;
   bottom: 10px;
-  padding: 10px;
-
 
   z-index: 10;
 }
 
 .swiper-slide {
   background: transparent;
+  padding: 10px;
+}
+
+.swiper-slide-shadow {
+  display:none;
 }

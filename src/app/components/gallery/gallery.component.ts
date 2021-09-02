@@ -16,7 +16,8 @@ import SwiperCore, {
   Autoplay,
   Thumbs,
   Controller,
-  SwiperOptions
+  SwiperOptions,
+  EffectCards
 } from "swiper";
 
 // install Swiper components
@@ -29,6 +30,7 @@ SwiperCore.use([
   Zoom,
   Autoplay,
   Thumbs,
+  EffectCards,
   Controller
 ]);
 
@@ -42,9 +44,11 @@ export class GalleryComponent implements OnInit {
   //Swiper Config
   //https://swiperjs.com/angular
   config: SwiperOptions = {
+    effect: <"custom">"'cards'",
+    grabCursor: true,
     navigation: true,
     pagination: { clickable: true },
-    scrollbar: { draggable: true },
+    //scrollbar: { draggable: true },
   };
 
   //Easy to access selected content
