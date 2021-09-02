@@ -5,12 +5,16 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './components/main/main.component';
 import { SharedDataModule } from './data/shared.store.module';
 import { PostcardComponent } from './components/postcard/postcard.component';
+import { GalleryComponent } from './components/gallery/gallery.component';
+import { PhotoComponent } from './components/photo/photo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    PostcardComponent
+    PostcardComponent,
+    GalleryComponent,
+    PhotoComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { IGraphic } from "./graphic.model";
-import { MapLocation } from "./location.model";
+import { IGraphic } from "../models/graphic.model";
+import { MapLocation } from "../models/location.model";
 
 @Injectable() 
 export class Store {

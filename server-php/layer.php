@@ -37,10 +37,9 @@
                         "Image":"'.GetImage().'",
                         "Scale":"'.GetMeta("scale_dependency").'",
                         "Marker":"'.GetMeta("marker_type").'",
-                        "ArticleURL":"'.GetMeta("article_url").'",
                         "Content":"'.GetMeta("popup_content").'",
-                        "Articles":['.ParsePostIdArrayString(GetMeta("article")).'],
-                        "Gallery":['.ParsePostIdArrayString(GetMeta("photo_gallery")).']
+                        "Articles":"['.ParsePostIdArrayString(GetMeta("article")).']",
+                        "Gallery":"['.ParsePostIdArrayString(GetMeta("photo_gallery")).']"
                     }}';
                     
                     
@@ -84,19 +83,44 @@
         return $value;
     }
     
+    //Parse the IDs from WordPress and get the article / media info
     function ParsePostIdArrayString($text) {
         //a:1:{i:0;s:3:"711";}
         //a:2:{i:0;s:3:"733";i:1;s:3:"757";}
+        
+        //Split the output blob
         $result = "";
         $parts = explode(':"', $text);
         $count = count($parts);
+        
+        //Loop through the parts (skip the first)
         for ($i=1; $i<=$count; $i++ ) {
+            
+            //Get the PostID
             $part = $parts[$i];
             $id = substr($part, 0, strpos($part, '"'));
-            if ($i > 1 && $i<$count) {
-                $result = $result.",";
+            
+            if (is_numeric($id)) {
+                
+                $post_id = (int)$id;
+                
+                //Get the Post Info
+                $the_post = get_post( $post_id ); 
+                $title = $the_post->post_title;
+                $date = $the_post->post_date;
+                $url = get_permalink($the_post);
+                $excerpt = $the_post->post_excerpt;
+    
+                //add the comma between items
+                if ($i > 1) {
+                    $result = $result.",";
+                }
+    
+                //Append the post info JSON object
+                $objectString = str_replace('"', '\"', '{"id":'.$id.',"title":"'.$title.'","created":"'.$date.'","url":"'.$url.'","excerpt":"'.$excerpt.'"}');
+                $result = $result.$objectString;     
             }
-            $result = $result.$id;
+
         }
         return $result;
     }

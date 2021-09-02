@@ -1,4 +1,5 @@
 import { IGraphic } from "./graphic.model";
+import { IWPPost } from "./post.model";
 
 export class MapLocation {
 
@@ -6,7 +7,8 @@ export class MapLocation {
     Image: string = "";
     Scale: string = "";
     Marker: string = "";
-    ArticleURL: string = "";
+    Articles: IWPPost[] = [];
+    Gallery: IWPPost[] = [];
     Content: string = "";
 
     constructor(private graphic: IGraphic) {
@@ -15,12 +17,19 @@ export class MapLocation {
         this.Image = this.prop("Image");
         this.Scale = this.prop("Scale");
         this.Marker = this.prop("Marker");
-        this.ArticleURL = this.prop("ArticleURL");
+        this.Articles = this.array_prop("Articles");
+        this.Gallery = this.array_prop("Gallery");
         this.Content = this.prop("Content");
+
+        console.log(this.graphic)
 
     }
 
     private prop(property: string): string {
         return this.graphic.attributes[property] ? this.graphic.attributes[property] : "";
+    }
+
+    private array_prop(property: string): any[] {
+        return this.graphic.attributes[property] ? JSON.parse(this.graphic.attributes[property]) : [];
     }
 }

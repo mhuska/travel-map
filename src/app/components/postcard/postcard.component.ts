@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MapLocation } from '../../data/location.model';
+import { MapLocation } from '../../models/location.model';
 import { Store } from '../../data/store.data';
 
 @Component({

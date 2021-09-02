@@ -8,6 +8,16 @@
         </div>
         <h3>{{content.Title}}</h3>
         <p>{{content.Content}}</p>
-        <a href="{{content.ArticleURL}}" target="_blank">Read More</a>
+        <!--<p><small>Read more...</small></p>-->
+        <a>
+            <div class="articles" *ngFor="let article of content.Articles">
+                <a href="{{article.url}}" target="_blank">
+                    <div class="article">               
+                        <h4>{{article.title}}</h4>
+                        <p>{{article.excerpt}} <a href="{{article.url}}" target="_blank"><small>read more</small></a></p>                    
+                    </div>
+                </a>
+            </div>
+        </a>      
     </div>
 </div>

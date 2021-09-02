@@ -1,0 +1,20 @@
+<div class="gallery-container" *ngIf="content">
+
+
+    
+    <div class="item" *ngFor="let item of items; trackBy: trackByFn">
+
+        <!--The Postcard-->
+        <ng-container *ngIf="item.type=='postcard'">
+            <app-postcard></app-postcard>
+        </ng-container>
+        
+        <!--The Photos-->
+        <ng-container *ngIf="item.type=='media'">
+            <app-photo [post]="item.item"></app-photo>
+        </ng-container>
+    </div>
+
+   
+
+</div>
