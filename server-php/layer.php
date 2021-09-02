@@ -42,13 +42,12 @@
                         "Gallery":"['.ParsePostIdArrayString(GetMeta("photo_gallery")).']"
                     }}';
                     
-                    
                     //concatenate the feature
                     $json = $json.$feature;
               
                 }
          
-
+                $i++; //Increment index
             }
         } else {
             // no posts found
