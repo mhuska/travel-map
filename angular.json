@@ -17,6 +17,8 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "baseHref": "/travel-map/",
+            "deployUrl":"/travel-map/",
             "allowedCommonJsDependencies": [
               "crypto-js",
               "rxjs/Subject",

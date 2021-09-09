@@ -70,7 +70,7 @@ export class MainComponent implements OnInit, AfterViewInit {
         
         //Point Layer
         const pointLayer = new GeoJSONLayer({
-            url: "https://slowcamino.com/custom/pins.php",
+            url: "https://slowcamino.com/travel-map/assets/server-php/pins.php",
             outFields: ["*"],
             copyright: "Slow Camino",
             popupTemplate: template,
