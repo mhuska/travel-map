@@ -9,14 +9,6 @@ import { SwiperComponent } from "swiper/angular";
 import SwiperCore, {
   Navigation,
   Pagination,
-  Scrollbar,
-  A11y,
-  Virtual,
-  Zoom,
-  Autoplay,
-  Thumbs,
-  Controller,
-  SwiperOptions,
   EffectCards
 } from "swiper";
 
@@ -24,14 +16,7 @@ import SwiperCore, {
 SwiperCore.use([
   Navigation,
   Pagination,
-  Scrollbar,
-  A11y,
-  Virtual,
-  Zoom,
-  Autoplay,
-  Thumbs,
-  EffectCards,
-  Controller
+  EffectCards
 ]);
 
 @Component({
@@ -40,16 +25,6 @@ SwiperCore.use([
   styleUrls: ['./gallery.component.css']
 })
 export class GalleryComponent implements OnInit {
-
-  //Swiper Config
-  //https://swiperjs.com/angular
-  config: SwiperOptions = {
-    effect: <"custom">"'cards'",
-    grabCursor: true,
-    navigation: true,
-    pagination: { clickable: true },
-    //scrollbar: { draggable: true },
-  };
 
   //Easy to access selected content
   get content(): MapLocation | null {
@@ -75,10 +50,15 @@ export class GalleryComponent implements OnInit {
   constructor(private store: Store) { }
 
   ngOnInit(): void {
+    
   }
 
   trackByFn(item: any): number {
     return item.id;
+  }
+
+  hide() {
+    this.store.SetLocation(null);
   }
 
 }

@@ -11,6 +11,11 @@ body,
   margin: 0;
   height: 100%;
   width: 100%;
+  font-family: "PT Serif", "Latin-Ext", Lato, sans-serif;
+}
+
+html {
+  overflow: hidden;
 }
 
 .esri-attribution {

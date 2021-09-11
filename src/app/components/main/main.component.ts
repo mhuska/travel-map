@@ -4,7 +4,8 @@ import TileLayer from '@arcgis/core/layers/TileLayer';
 import Map from '@arcgis/core/Map';
 import MapView from '@arcgis/core/views/MapView';
 import Basemap from '@arcgis/core/Basemap';
-import { Store } from 'src/app/data/store.data';
+import { Store } from '../../data/store.data';
+import { MapLocation } from '../../models/location.model';
 
 @Component({
   selector: 'app-main',
@@ -12,6 +13,10 @@ import { Store } from 'src/app/data/store.data';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit, AfterViewInit {
+
+  get content(): MapLocation {
+    return this.store.CurrentLocation;
+  }
 
   constructor(private store: Store) { }
 
@@ -26,7 +31,7 @@ export class MainComponent implements OnInit, AfterViewInit {
   LoadMap() {
    
          //Basmap
-         let basemap = new Basemap({
+         let basemap: Basemap = new Basemap({
           baseLayers: [
             new TileLayer({
               url: "https://tiles.arcgis.com/tiles/nGt4QxSblgDfeJn9/arcgis/rest/services/VintageShadedRelief/MapServer",
@@ -45,6 +50,7 @@ export class MainComponent implements OnInit, AfterViewInit {
         };
         
         const marker_size = "22px";
+        const red_x_url = "./assets/symbols/pirate-x-18.png";
 
         //Point Renderer
         const renderer = {
@@ -52,7 +58,7 @@ export class MainComponent implements OnInit, AfterViewInit {
           field: "Marker",
           defaultSymbol: {
             type: "picture-marker",              
-            url: "./assets/symbols/pirate-x-18.png",
+            url: red_x_url,
             width: marker_size,
             height: marker_size,
           },
@@ -60,7 +66,7 @@ export class MainComponent implements OnInit, AfterViewInit {
             value: "Red",
             symbol: {
               type: "picture-marker",
-              url: "./assets/symbols/pirate-x-18.png",
+              url: red_x_url,
               width: marker_size,
               height: marker_size,
             },
@@ -80,7 +86,7 @@ export class MainComponent implements OnInit, AfterViewInit {
                    
         //Map       
         const map = new Map({
-          basemap: basemap,
+          basemap: <string | Basemap> "hybrid",
           layers: [pointLayer]
         });
 
@@ -88,7 +94,6 @@ export class MainComponent implements OnInit, AfterViewInit {
         const view = new MapView({
           map: map,
           center: [0, 15], // Longitude, latitude
-          zoom: 2, // Zoom level
           constraints: {
             minZoom: 2,
             rotationEnabled: false,          
@@ -109,7 +114,27 @@ export class MainComponent implements OnInit, AfterViewInit {
         view.popup.watch("selectedFeature", function (graphic) {
           _co.store.SetLocation(graphic);
         });
+
+        let _updateBasemap = this.UpdateBasemap;
+
+        //Watch the Scale and change basemap when zoomed in
+        //Update scale-dependent rendering when scale changes
+        view.watch("scale", function (newScale) {
           
+          if (newScale > 9200000) {
+            _updateBasemap(map, view, basemap);
+          } else {
+            _updateBasemap(map, view, "hybrid");
+          }
+        });
+
+          
+  }
+
+  UpdateBasemap(map: any, view: any, basemap: any) {
+    if (map.basemap !== basemap) {
+      map.basemap = basemap;
+    }
   }
 
 }

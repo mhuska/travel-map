@@ -7,7 +7,7 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
-          "strict": true
+          "strict": false
         }
       },
       "root": "",
@@ -17,8 +17,6 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "baseHref": "/travel-map/",
-            "deployUrl":"/travel-map/",
             "allowedCommonJsDependencies": [
               "crypto-js",
               "rxjs/Subject",
@@ -113,6 +111,8 @@
           },
           "configurations": {
             "production": {
+              "baseHref": "/travel-map/",
+              "deployUrl":"/travel-map/",
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -134,7 +134,10 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "assets": [
+                "src/assets"
+              ]
             }
           },
           "defaultConfiguration": "production"

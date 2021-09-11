@@ -1,4 +1,7 @@
 <swiper [effect]="'cards'"
+        [grabCursor]="true"
+        [navigation]="true"
+        [pagination]="true"
         *ngIf="content">
 
     <ng-template swiperSlide *ngFor="let item of items; trackBy: trackByFn" let-data>
@@ -15,5 +18,8 @@
         </div>
     </ng-template>
        
-
 </swiper>
+
+
+<a class="close-button" role="button" tabindex="0" (click)="hide()" *ngIf="content">Close</a>
+

@@ -33,3 +33,9 @@
     height:96%;
     width: 94%;
 }
+
+.info {
+    margin: 0 3%;
+    color: #484848;  
+    text-align: center;
+}
