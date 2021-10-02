@@ -1,7 +1,7 @@
 .photo-wrapper {
     width: max-content;
     height: 300px;
-    margin: auto;
+    /*margin: auto;*/
     box-shadow: 0px 2px 10px rgb(0 0 0 / 30%);
 }
 

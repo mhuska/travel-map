@@ -9,14 +9,16 @@ import { SwiperComponent } from "swiper/angular";
 import SwiperCore, {
   Navigation,
   Pagination,
-  EffectCards
+  EffectCards,
+  EffectCoverflow
 } from "swiper";
 
 // install Swiper components
 SwiperCore.use([
   Navigation,
   Pagination,
-  EffectCards
+  EffectCards,
+  EffectCoverflow
 ]);
 
 @Component({

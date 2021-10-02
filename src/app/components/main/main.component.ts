@@ -78,16 +78,39 @@ export class MainComponent implements OnInit, AfterViewInit {
         const pointLayer = new GeoJSONLayer({
             url: "https://slowcamino.com/travel-map/assets/server-php/pins.php",
             outFields: ["*"],
+            definitionExpression: "Scale='All'",
             copyright: "Slow Camino",
             popupTemplate: template,
             renderer: <any>renderer
         });
+
+        const zoomedOutLayer = new GeoJSONLayer({
+          url: "https://slowcamino.com/travel-map/assets/server-php/pins.php",
+          outFields: ["*"],
+          minScale: 9200000,
+          definitionExpression: "Scale='Zoomed-Out'",
+          copyright: "Slow Camino",
+          popupTemplate: template,
+          renderer: <any>renderer
+      });
+      
+
+        const zoomedInLayer = new GeoJSONLayer({
+          url: "https://slowcamino.com/travel-map/assets/server-php/pins.php",
+          outFields: ["*"],
+          maxScale: 9200000,
+          definitionExpression: "Scale='Zoomed-In'",
+          copyright: "Slow Camino",
+          popupTemplate: template,
+          renderer: <any>renderer
+      });
+      
         
                    
         //Map       
         const map = new Map({
           basemap: <string | Basemap> "hybrid",
-          layers: [pointLayer]
+          layers: [pointLayer, zoomedInLayer, zoomedOutLayer]
         });
 
         //View
