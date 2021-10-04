@@ -50,69 +50,21 @@ export class MainComponent implements OnInit, AfterViewInit {
           title: "{Title}",
           content: "<img src='{Image}' width='200px'><a href='{ArticleURL}' target='_blank'>read more...</a>",
         };
-        
-        const marker_size = "22px";
-        const red_x_url = "./assets/symbols/pirate-x-18.png";
-
-        //Point Renderer
-        const renderer = {
-          type: "unique-value",
-          field: "Marker",
-          defaultSymbol: {
-            type: "picture-marker",              
-            url: red_x_url,
-            width: marker_size,
-            height: marker_size,
-          },
-          uniqueValueInfos: [{
-            value: "Red",
-            symbol: {
-              type: "picture-marker",
-              url: red_x_url,
-              width: marker_size,
-              height: marker_size,
-            },
-            label: "Red"
-          }]
-        };
-        
+               
         //Point Layer
         const pointLayer = new GeoJSONLayer({
             url: pinsUrl,
             outFields: ["*"],
-            definitionExpression: "Scale='All'",
             copyright: "Slow Camino",
-            popupTemplate: template,
-            renderer: <any>renderer
+            popupTemplate: template
         });
-
-        const zoomedOutLayer = new GeoJSONLayer({
-          url: pinsUrl,
-          outFields: ["*"],
-          maxScale: 9200000,
-          definitionExpression: "Scale='Zoomed-Out'",
-          copyright: "Slow Camino",
-          popupTemplate: template,
-          renderer: <any>renderer
-      });
-      
-
-        const zoomedInLayer = new GeoJSONLayer({
-          url: pinsUrl,
-          outFields: ["*"],
-          minScale: 9200000,
-          definitionExpression: "Scale='Zoomed-In'",
-          copyright: "Slow Camino",
-          popupTemplate: template,
-          renderer: <any>renderer
-      });
-      
+        this.UpdateRenderer(pointLayer, "ZoomedOut"); //Set the renderer
         
                    
         //Map       
         const map = new Map({
           basemap: <string | Basemap> "hybrid",
-          layers: [pointLayer, zoomedInLayer, zoomedOutLayer]
+          layers: [pointLayer]
         });
 
         //View
@@ -141,6 +93,7 @@ export class MainComponent implements OnInit, AfterViewInit {
         });
 
         let _updateBasemap = this.UpdateBasemap;
+        let _updateRenderer = this.UpdateRenderer;
 
         //Watch the Scale and change basemap when zoomed in
         //Update scale-dependent rendering when scale changes
@@ -148,8 +101,10 @@ export class MainComponent implements OnInit, AfterViewInit {
           
           if (newScale > 9200000) {
             _updateBasemap(map, view, basemap);
+            _updateRenderer(pointLayer, "ZoomedOut");
           } else {
             _updateBasemap(map, view, "hybrid");
+            _updateRenderer(pointLayer, "ZoomedIn");
           }
         });
 
@@ -161,5 +116,47 @@ export class MainComponent implements OnInit, AfterViewInit {
       map.basemap = basemap;
     }
   }
+
+  UpdateRenderer(layer: any, mode: "ZoomedIn" | "ZoomedOut") {
+
+    const marker_size = "22px";
+    const red_x_url = "./assets/symbols/pirate-x-18.png";
+
+    let expression;
+    if (mode == "ZoomedIn") {
+      expression = "When($feature.Scale=='Zoomed-In' || $feature.Scale=='All', $feature.Marker, 'Hidden')"
+    } else {
+      expression = "When($feature.Scale=='Zoomed-Out' || $feature.Scale=='All', $feature.Marker, 'Hidden')"
+    }
+
+    layer.renderer = {
+        type: "unique-value",
+        valueExpression: expression,
+        defaultSymbol: {
+          type: "picture-marker",
+          url: red_x_url,
+          width: marker_size,
+          height: marker_size,
+        },
+        uniqueValueInfos: [
+         {
+          value: "Hidden",
+          symbol:{
+            type: "simple-marker",              
+            color: [0, 0, 0, 0]
+          }
+         } 
+          ,{
+          value: "Red",
+          symbol: {
+            type: "picture-marker",
+            url: red_x_url,
+            width: marker_size,
+            height: marker_size,
+          },
+          label: "Red"
+        }]
+      };
+    }
 
 }

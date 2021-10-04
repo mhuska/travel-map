@@ -13,6 +13,7 @@ import { SharedDataModule } from './data/shared.store.module';
 import { PostcardComponent } from './components/postcard/postcard.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { PhotoComponent } from './components/photo/photo.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { PhotoComponent } from './components/photo/photo.component';
     CommonModule,
     FormsModule,
     SwiperModule,
+    HttpClientModule,
     SharedDataModule.forRoot(),
   ],
   providers: [],

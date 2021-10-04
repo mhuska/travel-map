@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { IGraphic } from "../models/graphic.model";
 import { MapLocation } from "../models/location.model";
+import { HttpClient } from '@angular/common/http';
 
 @Injectable() 
 export class Store {
@@ -9,14 +10,14 @@ export class Store {
     
     CurrentLocation: MapLocation | null = null;
 
-    constructor() {
+    constructor(private http: HttpClient) {
 
     }
 
     SetLocation(graphic: IGraphic) {
         
         if (graphic) {
-            let location: MapLocation = new MapLocation(graphic);
+            let location: MapLocation = new MapLocation(graphic, this.http);
             this.LocationHistory.push(location);
             this.CurrentLocation = location;
         } else {

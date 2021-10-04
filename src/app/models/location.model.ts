@@ -1,5 +1,8 @@
 import { IGraphic } from "./graphic.model";
 import { IWPPost } from "./post.model";
+import { HttpClient } from '@angular/common/http';
+
+const locationUrl: string = "https://slowcamino.com/travel-map/assets/server-php/location.php";
 
 export class MapLocation {
 
@@ -13,7 +16,7 @@ export class MapLocation {
     Date: Date;
     PostId: number;
 
-    constructor(private graphic: IGraphic) {
+    constructor(private graphic: IGraphic, private http: HttpClient) {
 
         this.Title = this.prop("Title");
         this.Scale = this.prop("Scale");
@@ -21,13 +24,25 @@ export class MapLocation {
         this.PostId = +this.prop("PostId");
         this.Date = new Date(this.prop("Date"));
 
-        
-        //this.Image = this.prop("Image");
-        //this.Articles = this.array_prop("Articles");
-        //this.Gallery = this.array_prop("Gallery");
-        //this.Content = this.prop("Content");
+        //Call the location api to get the rest of the data
+        let opt = {
+            observe: <"response">"response",
+            reportProgress: false,
+            responseType: <"json">"json",
+        };
 
-        console.log(this.graphic)
+        this.http.get(locationUrl + "?id=" + this.PostId.toString(), opt)
+            .subscribe({
+                next: (res) => {
+                    let result: any = res.body;
+                    console.log(result);
+                    this.Articles = result.Articles ? JSON.parse(result.Articles) : [];
+                    this.Gallery = result.Gallery ? JSON.parse(result.Gallery) : [];
+                    this.Content = result.Content;
+                    this.Image = result.Image;
+
+                }
+            });
 
     }
 
@@ -35,7 +50,4 @@ export class MapLocation {
         return this.graphic.attributes[property] ? this.graphic.attributes[property] : "";
     }
 
-    private array_prop(property: string): any[] {
-        return this.graphic.attributes[property] ? JSON.parse(this.graphic.attributes[property]) : [];
-    }
 }
