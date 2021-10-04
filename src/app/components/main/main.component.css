@@ -39,3 +39,13 @@
     color: #484848;  
     text-align: center;
 }
+
+@media only screen and (max-width: 668px) {
+    .img-cutout {
+        display: none;
+    }
+
+    .main-container {
+        height: 100vh;
+    }
+}

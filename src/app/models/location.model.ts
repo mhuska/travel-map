@@ -10,16 +10,22 @@ export class MapLocation {
     Articles: IWPPost[] = [];
     Gallery: IWPPost[] = [];
     Content: string = "";
+    Date: Date;
+    PostId: number;
 
     constructor(private graphic: IGraphic) {
 
         this.Title = this.prop("Title");
-        this.Image = this.prop("Image");
         this.Scale = this.prop("Scale");
         this.Marker = this.prop("Marker");
-        this.Articles = this.array_prop("Articles");
-        this.Gallery = this.array_prop("Gallery");
-        this.Content = this.prop("Content");
+        this.PostId = +this.prop("PostId");
+        this.Date = new Date(this.prop("Date"));
+
+        
+        //this.Image = this.prop("Image");
+        //this.Articles = this.array_prop("Articles");
+        //this.Gallery = this.array_prop("Gallery");
+        //this.Content = this.prop("Content");
 
         console.log(this.graphic)
 

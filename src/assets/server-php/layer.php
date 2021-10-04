@@ -34,6 +34,15 @@
                     $feature = $feature.
                     '"properties":{
                         "Title":"'.get_the_title().'",
+                        "Scale":"'.GetMeta("scale_dependency").'",
+                        "Marker":"'.GetMeta("marker_type").'",
+                        "Date":"'.get_the_date().'",
+                        "PostId":'.get_the_ID().'
+                    }}';
+                    
+                    /*
+                    '"properties":{
+                        "Title":"'.get_the_title().'",
                         "Image":"'.GetImage().'",
                         "Scale":"'.GetMeta("scale_dependency").'",
                         "Marker":"'.GetMeta("marker_type").'",
@@ -41,6 +50,7 @@
                         "Articles":"['.ParsePostIdArrayString(GetMeta("article")).']",
                         "Gallery":"['.ParsePostIdArrayString(GetMeta("photo_gallery")).']"
                     }}';
+                    */
                     
                     //concatenate the feature
                     $json = $json.$feature;

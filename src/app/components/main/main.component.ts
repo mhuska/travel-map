@@ -7,6 +7,8 @@ import Basemap from '@arcgis/core/Basemap';
 import { Store } from '../../data/store.data';
 import { MapLocation } from '../../models/location.model';
 
+const pinsUrl: string = "https://slowcamino.com/travel-map/assets/server-php/pins.php";
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -76,7 +78,7 @@ export class MainComponent implements OnInit, AfterViewInit {
         
         //Point Layer
         const pointLayer = new GeoJSONLayer({
-            url: "https://slowcamino.com/travel-map/assets/server-php/pins.php",
+            url: pinsUrl,
             outFields: ["*"],
             definitionExpression: "Scale='All'",
             copyright: "Slow Camino",
@@ -85,9 +87,9 @@ export class MainComponent implements OnInit, AfterViewInit {
         });
 
         const zoomedOutLayer = new GeoJSONLayer({
-          url: "https://slowcamino.com/travel-map/assets/server-php/pins.php",
+          url: pinsUrl,
           outFields: ["*"],
-          minScale: 9200000,
+          maxScale: 9200000,
           definitionExpression: "Scale='Zoomed-Out'",
           copyright: "Slow Camino",
           popupTemplate: template,
@@ -96,9 +98,9 @@ export class MainComponent implements OnInit, AfterViewInit {
       
 
         const zoomedInLayer = new GeoJSONLayer({
-          url: "https://slowcamino.com/travel-map/assets/server-php/pins.php",
+          url: pinsUrl,
           outFields: ["*"],
-          maxScale: 9200000,
+          minScale: 9200000,
           definitionExpression: "Scale='Zoomed-In'",
           copyright: "Slow Camino",
           popupTemplate: template,
