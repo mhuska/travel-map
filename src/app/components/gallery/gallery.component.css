@@ -20,24 +20,26 @@
 
 .close-button {
     position: absolute;
-    top: 50%;
-    left: calc(50% - 25px);
+    top: 10px;
+    left: 10px;
     font-family: "PT Serif", Lato, sans-serif;
     color: white;
     cursor: pointer;
     text-align: center;
-    transition: opacity 1s;
-    opacity: 0.6;
-    z-index: 2;
+    transition: all 0.5s;
+    z-index: 3;
     font-size: 1.9em;
-    background-color: rgba(0,0,0,0.3);
     width: min-content;
-    padding: 5px 10px;
-    border-radius: 25px;
+    padding: 5px 13px;
+    border-radius: 50%;
+    pointer-events:all;
+    border: 1px white solid;
+    box-shadow: 0 0 3px 3px rgba(255,255,255,.3);
 }
 
 .close-button:hover {
-    opacity: 1;
+    background-color: rgba(0,0,0,0.3);
+    box-shadow: 0 0 5px 5px rgba(255,255,255,.5);
 }
 
 

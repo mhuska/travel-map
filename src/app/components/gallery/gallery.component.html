@@ -9,7 +9,7 @@
     -->
 <ng-container *ngIf="content">
     <div class="screen-cover">
-
+        <a class="close-button" role="button" tabindex="0" (click)="hide()" *ngIf="content">X</a>
     </div>
     
     <swiper [effect]="'coverflow'"
@@ -43,8 +43,7 @@
            
 
     </swiper>
-    
-    <!--<a class="close-button" role="button" tabindex="0" (click)="hide()" *ngIf="content">X</a>-->
+
     
     
 </ng-container>

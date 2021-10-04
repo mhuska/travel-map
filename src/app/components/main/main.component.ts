@@ -120,21 +120,37 @@ export class MainComponent implements OnInit, AfterViewInit {
   UpdateRenderer(layer: any, mode: "ZoomedIn" | "ZoomedOut") {
 
     const marker_size = "22px";
-    const red_x_url = "./assets/symbols/pirate-x-18.png";
+    const x_1_url = "./assets/symbols/pirate-x-1.png";
+    const x_2_url = "./assets/symbols/pirate-x-2.png";
+    const x_3_url = "./assets/symbols/pirate-x-3.png";
+    const x_4_url = "./assets/symbols/pirate-x-4.png";
+    const x_5_url = "./assets/symbols/pirate-x-5.png";
 
+    const dateConfig = [
+      {days: 30, marker: "x-1"},
+      {days: 60, marker: "x-2"},
+      {days: 90, marker: "x-3"},
+      {days: 180, marker: "x-4"},
+      {days: 365, marker: "x-5"}
+    ]
+
+    let dateExp: string = "When(" + dateConfig.map(c => `$feature.DaysSince < ${c.days}, '${c.marker}'`).join() + ", 'x-5')";
+    let markerTypeExp: string = `When($feature.Marker=='red', ${dateExp}, $feature.Marker)`;
     let expression;
     if (mode == "ZoomedIn") {
-      expression = "When($feature.Scale=='Zoomed-In' || $feature.Scale=='All', $feature.Marker, 'Hidden')"
+      expression = `When($feature.Scale=='Zoomed-In' || $feature.Scale=='All', ${markerTypeExp}, 'Hidden')`;
     } else {
-      expression = "When($feature.Scale=='Zoomed-Out' || $feature.Scale=='All', $feature.Marker, 'Hidden')"
+      expression = `When($feature.Scale=='Zoomed-Out' || $feature.Scale=='All', ${markerTypeExp}, 'Hidden')`
     }
+
+    console.log(expression)
 
     layer.renderer = {
         type: "unique-value",
         valueExpression: expression,
         defaultSymbol: {
           type: "picture-marker",
-          url: red_x_url,
+          url: x_5_url,
           width: marker_size,
           height: marker_size,
         },
@@ -146,16 +162,53 @@ export class MainComponent implements OnInit, AfterViewInit {
             color: [0, 0, 0, 0]
           }
          } 
-          ,{
-          value: "Red",
+        ,{
+          value: "x-1",
           symbol: {
             type: "picture-marker",
-            url: red_x_url,
+            url: x_1_url,
             width: marker_size,
             height: marker_size,
           },
           label: "Red"
-        }]
+        },{
+          value: "x-2",
+          symbol: {
+            type: "picture-marker",
+            url: x_2_url,
+            width: marker_size,
+            height: marker_size,
+          },
+          label: "Red"
+        },{
+          value: "x-3",
+          symbol: {
+            type: "picture-marker",
+            url: x_3_url,
+            width: marker_size,
+            height: marker_size,
+          },
+          label: "Red"
+        },{
+          value: "x-4",
+          symbol: {
+            type: "picture-marker",
+            url: x_4_url,
+            width: marker_size,
+            height: marker_size,
+          },
+          label: "Red"
+        },{
+          value: "x-5",
+          symbol: {
+            type: "picture-marker",
+            url: x_5_url,
+            width: marker_size,
+            height: marker_size,
+          },
+          label: "Red"
+        }
+      ]
       };
     }
 

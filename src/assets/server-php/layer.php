@@ -37,6 +37,7 @@
                         "Scale":"'.GetMeta("scale_dependency").'",
                         "Marker":"'.GetMeta("marker_type").'",
                         "Date":"'.get_the_date().'",
+                        "DaysSince":'.date_diff(date_create(get_the_date()), new DateTime())->format("%a").',
                         "PostId":'.get_the_ID().'
                     }}';
                     
