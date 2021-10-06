@@ -120,11 +120,11 @@ export class MainComponent implements OnInit, AfterViewInit {
   UpdateRenderer(layer: any, mode: "ZoomedIn" | "ZoomedOut") {
 
     const marker_size = "22px";
-    const x_1_url = "./assets/symbols/pirate-x-1.png";
-    const x_2_url = "./assets/symbols/pirate-x-2.png";
-    const x_3_url = "./assets/symbols/pirate-x-3.png";
-    const x_4_url = "./assets/symbols/pirate-x-4.png";
-    const x_5_url = "./assets/symbols/pirate-x-5.png";
+    const x_1_url = "./assets/symbols/pirate-x-1b.png";
+    const x_2_url = "./assets/symbols/pirate-x-2b.png";
+    const x_3_url = "./assets/symbols/pirate-x-3b.png";
+    const x_4_url = "./assets/symbols/pirate-x-4b.png";
+    const x_5_url = "./assets/symbols/pirate-x-5b.png";
 
     const dateConfig = [
       {days: 30, marker: "x-1"},
@@ -159,7 +159,10 @@ export class MainComponent implements OnInit, AfterViewInit {
           value: "Hidden",
           symbol:{
             type: "simple-marker",              
-            color: [0, 0, 0, 0]
+            color: [0, 0, 0, 0],
+            outline: {
+              width: 0.5, color: [0, 0, 0, 0]
+            }
           }
          } 
         ,{
