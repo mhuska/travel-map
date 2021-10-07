@@ -48,4 +48,11 @@
     .main-container {
         height: 100vh;
     }
+
+    .map-container {
+        top: 0;
+        left:0;
+        width: 100%;
+        height: calc(100% - 140px);
+    }
 }
