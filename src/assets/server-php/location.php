@@ -1,6 +1,6 @@
 <?php
 
-/*
+    /*
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
@@ -10,7 +10,7 @@
     $postid = $_GET["id"];
     
     //Create the JSON
-    header('Content-Type: application/geo+json');
+    header('Content-Type: application/json');
     header("Access-Control-Allow-Origin: *");
     echo GetLocationData($postid);
     http_response_code(200);
@@ -49,7 +49,7 @@
                     "Articles":"['.ParsePostIdArrayString(GetMeta("article")).']",
                     "Gallery":'.json_encode($gallery).'
                 }';
-
+            }
         }
         
         /* Restore original Post Data */
