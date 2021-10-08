@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IWPPost } from '../../models/post.model';
 
 @Component({
@@ -6,14 +6,10 @@ import { IWPPost } from '../../models/post.model';
   templateUrl: './photo.component.html',
   styleUrls: ['./photo.component.css']
 })
-export class PhotoComponent implements OnInit {
+export class PhotoComponent {
 
   @Input() post: IWPPost | null = null;
 
   constructor() { }
-
-  ngOnInit(): void {
-    console.log(this.post)
-  }
 
 }

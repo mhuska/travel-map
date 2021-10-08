@@ -24,7 +24,6 @@ export class Store {
             this.CurrentLocation = null;
         }
 
-        console.log(this.CurrentLocation)
     }
 
 }
