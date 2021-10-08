@@ -37,7 +37,7 @@ export class MapLocation {
                     let result: any = res.body;
                     console.log(result);
                     this.Articles = result.Articles ? JSON.parse(result.Articles) : [];
-                    this.Gallery = result.Gallery ? JSON.parse(result.Gallery) : [];
+                    this.Gallery = result.Gallery ? result.Gallery : [];
                     this.Content = result.Content;
                     this.Image = result.Image;
 
