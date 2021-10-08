@@ -13,6 +13,7 @@ export class PhotoComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.post)
   }
 
 }

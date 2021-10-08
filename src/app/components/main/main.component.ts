@@ -143,8 +143,6 @@ export class MainComponent implements OnInit, AfterViewInit {
       expression = `When($feature.Scale=='Zoomed-Out' || $feature.Scale=='All', ${markerTypeExp}, 'Hidden')`
     }
 
-    console.log(expression)
-
     layer.renderer = {
         type: "unique-value",
         valueExpression: expression,

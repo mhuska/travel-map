@@ -1,3 +1,8 @@
 <div *ngIf="post" class="photo-wrapper">
-    <img [src]="post.url">
+    <picture>
+        <source srcset="{{post.url}}.webp"
+                media="(min-width: 400px)" type="image/webp">
+        <img [src]="post.url" alt="" />
+    </picture>
+    <!--<img [src]="post.url">-->
 </div>

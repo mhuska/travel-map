@@ -1,9 +1,15 @@
 <div class="post-card-outer" *ngIf="content">
     <div class="post-card-photo">
-        <img [src]="content.Image">
+        <!--<img [src]="content.Image">-->
+        <picture>
+            <source srcset="{{content.Image}}.webp"
+                    media="(min-width: 400px)" type="image/webp">
+            <img [src]="content.Image" alt="" />
+        </picture>
     </div>
     <div class="post-card-content">
         <div class="postmark">
+            
             <img src="./assets/images/postmark.png">
         </div>
         <h3>{{content.Title}}</h3>

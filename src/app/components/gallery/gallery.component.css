@@ -120,6 +120,13 @@
     bottom: -40px;
 }*/
 
-@media only screen and (max-width: 660px) {
-
+@media only screen and (max-width: 668px) {
+    ::ng-deep .swiper {
+        width: 100%;
+        height: auto;
+        left: 0;
+        top: 100px;
+        bottom: unset;
+        z-index: 10;
+      }
 }
