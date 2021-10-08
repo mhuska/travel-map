@@ -1,5 +1,11 @@
 <?php
 
+/*
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+    */
+    
     //Get the ID
     $postid = $_GET["id"];
     
@@ -29,14 +35,21 @@
             while ( $query->have_posts() ) {
                 $query->the_post();
                 
-                $json = '{
-                        "Image":"'.GetImage().'",
-                        "Content":"'.GetMeta("popup_content").'",
-                        "Articles":"['.ParsePostIdArrayString(GetMeta("article")).']",
-                        "Gallery":"['.ParsePostIdArrayString(GetMeta("photo_gallery")).']"
-                    }';
+                $galleryJson = "[".str_replace('\"', '"', ParsePostIdArrayString(GetMeta("photo_gallery")))."]";
+                $gallery = json_decode($galleryJson);
 
-            }
+                foreach ($gallery as &$photo) {
+                    $link = wp_get_attachment_image_src( $photo->id, 'Large', false );
+                    $photo->url = $link[0];
+                }
+            
+                $json = '{
+                    "Image":"'.GetImage().'",
+                    "Content":"'.GetMeta("popup_content").'",
+                    "Articles":"['.ParsePostIdArrayString(GetMeta("article")).']",
+                    "Gallery":'.json_encode($gallery).'
+                }';
+
         }
         
         /* Restore original Post Data */
