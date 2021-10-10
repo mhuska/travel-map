@@ -1,12 +1,45 @@
 
 <div class="main-container">
     <div class="map">
-        <img src="./assets/images/map-outline.png" class="img-cutout">
+
+        <!--The outline-->
+        <picture >
+            <source srcset="./assets/images/map-outline.webp"
+            media="(min-width: 400px)" type="image/webp">
+            <img src="./assets/images/map-outline.png" class="img-cutout" alt="" />
+        </picture>
+
+        <!--The Map Container-->
         <div class="map-container" id="map-container" #mapViewNode></div>
     </div>
 
     <app-gallery></app-gallery>
+</div>
 
+
+<div class="info-section">
+    <div class="info-container">
+        <!--background-->
+        <picture class="horiz-paper">
+            <source srcset="./assets/images/blank-vintage-paper900.webp" type="image/webp">
+            <img src="./assets/images/blank-vintage-paper900.png" alt="" />
+        </picture>
+        <picture class="vert-paper">
+            <source srcset="./assets/images/blank-vintage-paper900v.webp" type="image/webp">
+            <img src="./assets/images/blank-vintage-paper900v.png" alt="" />
+        </picture>
+
+        <!--Text-->
+        <div class="text-area">
+            <h2 style="text-align: center; font-family: 'Parisienne', cursive;">Slow Camino Map</h2>
+            <p>This map shows where we've traveled. Click on the markers to see our favorite photos. We provide links to an article as available.</p>
+
+            <div style="display: block">
+                <div style="display: inline-flex"><img src="./assets/symbols/pirate-x-5b.png" style="width: 24px;"> = Where we've been.</div>
+                <div style="display: inline-flex"><img src="./assets/symbols/pirate-x-1b.png" style="width: 24px;"> = Recent travel.</div>
+            </div>
+        </div>
+    </div>
 </div>
 
 

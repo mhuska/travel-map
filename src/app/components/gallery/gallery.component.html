@@ -27,24 +27,26 @@
                 slideShadows: true
             }">
     
-        <ng-template swiperSlide *ngFor="let item of items; trackBy: trackByFn" >
+        <ng-container *ngFor="let item of items; trackBy: trackByFn" >
           
                 <!--The Postcard-->
-                <ng-container *ngIf="item.type=='postcard'">
+                <ng-template swiperSlide *ngIf="item.type=='postcard'">
                     <app-postcard></app-postcard>
-                </ng-container>
+                </ng-template>
+
+                <!--Extra photo for small screens-->
+                <ng-template swiperSlide *ngIf="item.type=='postcard' && screenWidth <= 668">
+                    <app-photo [post]="item.item"></app-photo>
+                </ng-template>
                 
                 <!--The Photos-->
-                <ng-container *ngIf="item.type=='media'">
+                <ng-template swiperSlide *ngIf="item.type=='media'">
                     <app-photo [post]="item.item"></app-photo>
-                </ng-container>
+                </ng-template>
       
-        </ng-template>
+        </ng-container>
            
-
     </swiper>
 
-    
-    
 </ng-container>
 

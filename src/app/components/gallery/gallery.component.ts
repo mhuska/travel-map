@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MapLocation } from '../../models/location.model';
 import { Store } from '../../data/store.data';
 import { IGalleryItem } from '../../models/gallery-item.model';
-import { SwiperComponent } from "swiper/angular";
+import { IWPPost } from '../../models/post.model';
 
 // install Swiper modules
 // import Swiper core and required components
@@ -33,11 +33,15 @@ export class GalleryComponent implements OnInit {
     return this.store.CurrentLocation;
   }
 
+  get screenWidth(): number {
+    return window.innerWidth ? window.innerWidth : 100;   
+  }
+
   //The items to show in the Swiper
   get items(): IGalleryItem[] {
     let result: IGalleryItem[] = [];
     if (this.content) {
-      result.push({id: 0, type: "postcard", item: null});
+      result.push({id: 0, type: "postcard", item: <IWPPost>{url: this.content.Image}});
 
       result.push(
         ...this.content.Gallery.map((item, index) => {

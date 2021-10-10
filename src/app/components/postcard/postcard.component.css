@@ -18,6 +18,7 @@
 .post-card-photo {
     grid-column-start: 1;
     grid-column-end: 2;
+    height: 300px;
 }
 
 .post-card-photo img {
@@ -29,8 +30,9 @@
 .post-card-content {
     grid-column-start: 2;
     grid-column-end: 3;
-    padding: 10px;
+    padding: 0 10px;
     position: relative;
+    overflow-y: auto;
 }
 
 .postmark {
@@ -75,4 +77,10 @@
 .article a {
     text-decoration: underline;
     color: #8704bd;
+}
+
+@media only screen and (max-width: 668px) {
+    .post-card-photo {
+        display:none;
+    }
 }
