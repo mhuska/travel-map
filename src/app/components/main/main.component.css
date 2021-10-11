@@ -21,6 +21,7 @@
     position: relative;
     width: 100%;
     height: 85vh;
+    max-height: 750px;
 }
 
 .map-container {
@@ -72,9 +73,10 @@
     top: 0;
     width: calc(100% - 150px);
     height: calc(100% - 150px);
-    padding: 75px;
+    padding: 25px 75px;
     font-family: 'Indie Flower', cursive;
     font-size: 1.5em;
+    color: #2e2e2e
 }
 
 @media only screen and (max-width: 668px) {
@@ -83,7 +85,7 @@
     }
 
     .map {
-        height: 90vh;
+        height: 100vh;
     }
 
     .map-container {
@@ -92,12 +94,14 @@
         width: 100%;
     }
 
-
+    .text-area {
+        font-size: 1em;
+    }
 
 }
 
-/*Vertical Phone*/
-@media only screen and (max-width: 400px) {
+/*This decides when to flip the sheet of paper*/
+@media only screen and (max-width: 500px) {
 
     .vert-paper {
         display: block;
@@ -106,6 +110,13 @@
         display: none;
     }
 
+}
 
+@media only screen and (max-width: 300px) {
+
+    .text-area{
+        padding: 25px;
+        width: calc(100% - 50px);
+    }
 
 }
