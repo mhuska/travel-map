@@ -1,34 +1,26 @@
+<!--https://swiperjs.com/swiper-api-->
 
-    <!--https://swiperjs.com/swiper-api-->
-    <!--
-<swiper [effect]="'cards'"
-        [grabCursor]="true"
-        [navigation]="true"
-        [pagination]="true"
-        *ngIf="content">  
-    -->
+
 <ng-container *ngIf="content">
-    <div class="screen-cover">
-        <a class="close-button" role="button" tabindex="0" (click)="hide()" *ngIf="content">X</a>
-    </div>
-    
-    <swiper [effect]="'coverflow'"
-            [grabCursor]="true"
-            [navigation]="true"
-            [pagination]="true"
-    
-            [centeredSlides]="true"
-            [slidesPerView]="'auto'"
-            [coverflowEffect]="{
-                rotate: 20,
-                stretch: 200,
-                depth: 100,
-                modifier: 1,
-                slideShadows: true
-            }">
-    
-        <ng-container *ngFor="let item of items; trackBy: trackByFn" >
-          
+    <!--Darken Screen-->
+    <div class="screen-cover"></div>
+
+    <!--Swiper-->
+    <div class="swiper-container">
+
+        <a class="close-button" role="button" tabindex="0" (click)="hide()" *ngIf="content"><img src="./assets/images/x-64.png"></a>
+
+        <swiper [effect]="'coverflow'" [grabCursor]="true" [navigation]="true" [pagination]="true"
+            [centeredSlides]="true" [slidesPerView]="'auto'" [coverflowEffect]="{
+            rotate: 20,
+            stretch: 200,
+            depth: 100,
+            modifier: 1,
+            slideShadows: true
+        }">
+
+            <ng-container *ngFor="let item of items; trackBy: trackByFn">
+
                 <!--The Postcard-->
                 <ng-template swiperSlide *ngIf="item.type=='postcard'">
                     <app-postcard></app-postcard>
@@ -38,15 +30,16 @@
                 <ng-template swiperSlide *ngIf="item.type=='postcard' && screenWidth <= 668">
                     <app-photo [post]="item.item"></app-photo>
                 </ng-template>
-                
+
                 <!--The Photos-->
                 <ng-template swiperSlide *ngIf="item.type=='media'">
                     <app-photo [post]="item.item"></app-photo>
                 </ng-template>
-      
-        </ng-container>
-           
-    </swiper>
+
+            </ng-container>
+
+        </swiper>
+    </div>
+
 
 </ng-container>
-

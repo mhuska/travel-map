@@ -22,29 +22,26 @@
     position: absolute;
     top: 10px;
     left: 10px;
-    font-family: "PT Serif", Lato, sans-serif;
-    color: white;
     cursor: pointer;
-    text-align: center;
     transition: all 0.5s;
     z-index: 3;
-    font-size: 1.9em;
-    width: min-content;
-    padding: 5px 13px;
-    border-radius: 50%;
-    pointer-events:all;
-    border: 1px white solid;
-    box-shadow: 0 0 30px 5px rgba(255,255,255,.3);
+    height: 42px;
+    width: 42px;
+    opacity: 0.8;
+}
+
+.close-button img {
+    height: 100%;
+    width: 100%;
 }
 
 .close-button:hover {
-    background-color: rgba(0,0,0,0.3);
-    box-shadow: 0 0 6px 5px rgba(255,255,255,.4);
+    opacity: 1;
 }
 
 
 /* Swiper */
-::ng-deep .swiper {
+.swiper-container {
     width: calc(100% - 20px);
     height: auto;
     margin: 0px auto;
@@ -53,8 +50,14 @@
     left: 10px;
     bottom: -25px;
     z-index: 10;
+}
+
+::ng-deep .swiper {
+    width: 100%;
+    height: auto;
     padding-top: 25px;
     padding-bottom: 10px;
+    max-height: calc(100vh - 40px);
   }
   
 ::ng-deep .swiper-slide {
@@ -121,12 +124,18 @@
 }*/
 
 @media only screen and (max-width: 668px) {
-    ::ng-deep .swiper {
+    .swiper-container {
+        left: 0;   
         width: 100%;
         height: auto;
-        left: 0;
-        top: 100px;
-        bottom: unset;
-        z-index: 10;
+        bottom: 0;
+    }
+
+    .close-button {
+        top: 0;
+    }
+
+    ::ng-deep .swiper {
+        width: 100%;
       }
 }
