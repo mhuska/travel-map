@@ -16,6 +16,10 @@ export class MapLocation {
     Visited: string = null;
     Date: Date;
     PostId: number;
+    Latitude: number;
+    Longitude: number;
+    
+    OnZoom: (geometry: any) => void;
 
     constructor(private graphic: IGraphic, private http: HttpClient) {
 
@@ -24,6 +28,8 @@ export class MapLocation {
         this.Marker = this.prop("Marker");
         this.PostId = +this.prop("PostId");
         this.Date = new Date(this.prop("Date"));
+        this.Latitude = graphic.geometry.y;
+        this.Longitude = graphic.geometry.x;
 
         //Call the location api to get the rest of the data
         let opt = {
@@ -50,5 +56,10 @@ export class MapLocation {
     private prop(property: string): string {
         return this.graphic.attributes[property] ? this.graphic.attributes[property] : "";
     }
+
+    public ZoomTo() {
+        this.OnZoom(this.graphic.geometry);
+    }
+
 
 }

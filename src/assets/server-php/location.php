@@ -45,7 +45,8 @@
             
                 $json = '{
                     "Image":"'.GetImage().'",
-                    "Content":"'.GetMeta("popup_content").'",
+                    "Content":"'.str_replace('"', '\"', GetMeta("popup_content")).'",
+                    "Visited":"'.GetMeta("visited").'",
                     "Articles":"['.ParsePostIdArrayString(GetMeta("article")).']",
                     "Gallery":'.json_encode($gallery).'
                 }';

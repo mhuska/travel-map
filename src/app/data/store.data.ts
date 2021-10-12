@@ -10,6 +10,8 @@ export class Store {
     
     CurrentLocation: MapLocation | null = null;
 
+    OnZoom: (geometry: any) => void;
+
     constructor(private http: HttpClient) {
 
     }
@@ -18,6 +20,7 @@ export class Store {
         
         if (graphic) {
             let location: MapLocation = new MapLocation(graphic, this.http);
+            if (this.OnZoom) location.OnZoom = this.OnZoom;
             this.LocationHistory.push(location);
             this.CurrentLocation = location;
 

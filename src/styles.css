@@ -3,6 +3,15 @@
 @import "https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap";
 @import "~swiper/swiper-bundle";
 
+/*
+@font-face {
+  font-family: "Parisienne";
+  font-style: normal;
+  font-weight: 400;
+  font-display: auto;
+  src: url("./assets/fonts/Parisienne/Parisienne-Regular.ttf") format("truetype");
+}*/
+
 /* You can add global styles to this file, and also import other style files */
 html,
 body,

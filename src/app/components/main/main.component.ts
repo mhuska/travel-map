@@ -6,9 +6,10 @@ import MapView from '@arcgis/core/views/MapView';
 import Basemap from '@arcgis/core/Basemap';
 import { Store } from '../../data/store.data';
 import { MapLocation } from '../../models/location.model';
+import LabelClass from '@arcgis/core/layers/support/LabelClass';
 
 const pinsUrl: string = "https://slowcamino.com/travel-map/assets/server-php/pins.php";
-
+const SCALE_BREAKPOINT: number = 9200000;
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -20,7 +21,10 @@ export class MainComponent implements OnInit, AfterViewInit {
     return this.store.CurrentLocation;
   }
 
-  constructor(private store: Store) { }
+  constructor(private store: Store) { 
+
+
+  }
 
   ngOnInit(): void {
 
@@ -51,26 +55,79 @@ export class MainComponent implements OnInit, AfterViewInit {
           content: "<img src='{Image}' width='200px'><a href='{ArticleURL}' target='_blank'>read more...</a>",
         };
                
+        //Basemap labels
+        /*
+        const labelsLayer = new TileLayer({
+          url: "http://services.arcgisonline.com/arcgis/rest/services/Reference/World_Boundaries_and_Places/MapServer",
+          minScale: 9200000
+        })*/
+
+        //Point Labels
+        const ZIPointLabels = new LabelClass({
+          // autocasts as new LabelClass()
+          symbol: {
+            type: "text",  // autocasts as new TextSymbol()
+            color: "#0a0a0a",
+            haloColor: [255, 255, 255, 0.7],
+            haloSize: "2px",
+            font: {
+                family: "Walter Turncoat",
+                style: "normal",
+                weight: "normal",
+                size: 12,
+              }
+            
+          },
+          minScale: SCALE_BREAKPOINT,
+          labelPlacement: <"center-right">"center-right",
+          labelExpressionInfo: {
+            expression: "IIf($feature.Scale=='Zoomed-Out', '', $feature.Title)"
+          }
+        });
+
+        const ZOPointLabels = new LabelClass({
+          // autocasts as new LabelClass()
+          symbol: {
+            type: "text",  // autocasts as new TextSymbol()
+            color: "#0a0a0a",
+            haloColor: [255, 255, 255, 0.7],
+            haloSize: "2px",
+            font: {
+                family: "Walter Turncoat",
+                style: "normal",
+                weight: "normal",
+                size: 10,
+              }
+            
+          },
+          maxScale: SCALE_BREAKPOINT,
+          labelPlacement: <"center-right">"center-right",
+          labelExpressionInfo: {
+            expression: "IIf($feature.Scale=='Zoomed-In', '' , $feature.Title)"
+          }
+        });
+
         //Point Layer
         const pointLayer = new GeoJSONLayer({
             url: pinsUrl,
             outFields: ["*"],
             copyright: "Slow Camino",
-            popupTemplate: template
+            popupTemplate: template,
+            labelingInfo: [ZOPointLabels, ZIPointLabels]
         });
         this.UpdateRenderer(pointLayer, "ZoomedOut"); //Set the renderer
         
                    
         //Map       
         const map = new Map({
-          basemap: <string | Basemap> "hybrid",
-          layers: [pointLayer]
+          basemap: <string | Basemap> "satellite",
+          layers: [ pointLayer]
         });
 
         //View
         const view = new MapView({
           map: map,
-          center: [-90, 0], // Longitude, latitude
+          center: [0, 0], // Longitude, latitude
           constraints: {
             minZoom: 2,
             rotationEnabled: false,          
@@ -97,18 +154,22 @@ export class MainComponent implements OnInit, AfterViewInit {
           _co.store.SetLocation(graphic);
         });
 
+        //Add the zoom action
+        this.store.OnZoom = (geometry: any) => {
+          view.goTo(geometry).then(function () { view.zoom = 7; });
+        }
+
         let _updateBasemap = this.UpdateBasemap;
         let _updateRenderer = this.UpdateRenderer;
 
         //Watch the Scale and change basemap when zoomed in
         //Update scale-dependent rendering when scale changes
         view.watch("scale", function (newScale) {
-          
-          if (newScale > 9200000) {
+          if (newScale > SCALE_BREAKPOINT) { //9245000) {
             _updateBasemap(map, view, basemap);
             _updateRenderer(pointLayer, "ZoomedOut");
           } else {
-            _updateBasemap(map, view, "hybrid");
+            _updateBasemap(map, view, "satellite");
             _updateRenderer(pointLayer, "ZoomedIn");
           }
         });
@@ -124,7 +185,7 @@ export class MainComponent implements OnInit, AfterViewInit {
 
   UpdateRenderer(layer: any, mode: "ZoomedIn" | "ZoomedOut") {
 
-    const marker_size = mode=="ZoomedIn" ? "42px" : "26px";
+    const marker_size = "26px"; // mode=="ZoomedIn" ? "42px" : "26px";
     const x_1_url = "./assets/symbols/pirate-x-1b.png";
     const x_2_url = "./assets/symbols/pirate-x-2b.png";
     const x_3_url = "./assets/symbols/pirate-x-3b.png";

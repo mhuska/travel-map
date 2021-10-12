@@ -8,14 +8,22 @@
         </picture>
     </div>
     <div class="post-card-content">
-        <div class="postmark">
-            
+        <!--Stamp-->
+        <div class="postmark">       
             <img src="./assets/images/postmark.png">
         </div>
-        <h3 style="margin-bottom:0;">{{content.Title}}<br><small >{{content.Visited}}</small></h3>
-        <p class="mtb">{{content.Content}}</p>
-        <!--<p><small>Read more...</small></p>-->
 
+        <!--Header-->
+        <h3 style="margin-bottom:0;">{{content.Title}}<br>
+            <small >{{content.Visited}} 
+               <!--<button tabindex="0" (click)="ZoomTo()">zoom-to</button>--> 
+            </small>
+        </h3>
+
+        <!--Content-->
+        <p class="mtb" [innerHTML]="content.Content"></p>
+
+        <!--Articles-->
         <div class="articles mtb" *ngFor="let article of content.Articles">
             <a href="{{article.url}}" target="_blank">
                 <div class="article">               
