@@ -124,7 +124,7 @@ export class MainComponent implements OnInit, AfterViewInit {
 
   UpdateRenderer(layer: any, mode: "ZoomedIn" | "ZoomedOut") {
 
-    const marker_size = "26px";
+    const marker_size = mode=="ZoomedIn" ? "42px" : "26px";
     const x_1_url = "./assets/symbols/pirate-x-1b.png";
     const x_2_url = "./assets/symbols/pirate-x-2b.png";
     const x_3_url = "./assets/symbols/pirate-x-3b.png";
