@@ -13,6 +13,7 @@ export class MapLocation {
     Articles: IWPPost[] = [];
     Gallery: IWPPost[] = [];
     Content: string = "";
+    Visited: string = null;
     Date: Date;
     PostId: number;
 
@@ -38,6 +39,7 @@ export class MapLocation {
                     this.Articles = result.Articles ? JSON.parse(result.Articles) : [];
                     this.Gallery = result.Gallery ? result.Gallery : [];
                     this.Content = result.Content;
+                    this.Visited = result.Visited;
                     this.Image = result.Image;
 
                 }

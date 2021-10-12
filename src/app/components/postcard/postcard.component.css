@@ -79,6 +79,16 @@
     color: #8704bd;
 }
 
+h3 > small {
+    font-weight: 100;
+    font-style: italic;
+    font-size: 0.78em;
+}
+
+.mtb {
+    margin: 3px 0;
+}
+
 @media only screen and (max-width: 668px) {
     .post-card-photo {
         display:none;

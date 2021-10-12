@@ -13,6 +13,10 @@ export class PostcardComponent implements OnInit {
     return this.store.CurrentLocation;
   }
 
+  get includeExcerpt(): boolean {
+    return this.content.Content && this.content.Content.length > 75 ? false : true;
+  }
+
   constructor(private store: Store) { }
 
   ngOnInit(): void {

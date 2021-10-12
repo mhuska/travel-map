@@ -70,7 +70,7 @@ export class MainComponent implements OnInit, AfterViewInit {
         //View
         const view = new MapView({
           map: map,
-          center: [0, 15], // Longitude, latitude
+          center: [-90, 0], // Longitude, latitude
           constraints: {
             minZoom: 2,
             rotationEnabled: false,          

@@ -20,6 +20,9 @@ export class Store {
             let location: MapLocation = new MapLocation(graphic, this.http);
             this.LocationHistory.push(location);
             this.CurrentLocation = location;
+
+            console.log(location)
+
         } else {
             this.CurrentLocation = null;
         }

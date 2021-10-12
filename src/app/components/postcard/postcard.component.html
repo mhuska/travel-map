@@ -12,18 +12,20 @@
             
             <img src="./assets/images/postmark.png">
         </div>
-        <h3>{{content.Title}}</h3>
-        <p>{{content.Content}}</p>
+        <h3 style="margin-bottom:0;">{{content.Title}}<br><small >{{content.Visited}}</small></h3>
+        <p class="mtb">{{content.Content}}</p>
         <!--<p><small>Read more...</small></p>-->
-        <a>
-            <div class="articles" *ngFor="let article of content.Articles">
-                <a href="{{article.url}}" target="_blank">
-                    <div class="article">               
-                        <h4>{{article.title}}</h4>
-                        <p>{{article.excerpt}} <a href="{{article.url}}" target="_blank"><small>read more</small></a></p>                    
-                    </div>
-                </a>
-            </div>
-        </a>      
+
+        <div class="articles mtb" *ngFor="let article of content.Articles">
+            <a href="{{article.url}}" target="_blank">
+                <div class="article">               
+                    <h4>{{article.title}} 
+                        <a *ngIf="!includeExcerpt" href="{{article.url}}" target="_blank"><small>read...</small></a>
+                    </h4>
+                    <p *ngIf="includeExcerpt">{{article.excerpt}} <a href="{{article.url}}" target="_blank"><small>read more</small></a></p>                    
+                </div>
+            </a>
+        </div>
+
     </div>
 </div>
