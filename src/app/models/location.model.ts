@@ -10,6 +10,7 @@ export class MapLocation {
     Image: string = "";
     Scale: string = "";
     Marker: string = "";
+    FlyTo: boolean = false;
     Articles: IWPPost[] = [];
     Gallery: IWPPost[] = [];
     Content: string = "";
@@ -22,6 +23,7 @@ export class MapLocation {
     OnZoom: (geometry: any) => void;
 
     constructor(private graphic: IGraphic, private http: HttpClient) {
+
 
         this.Title = this.prop("Title");
         this.Scale = this.prop("Scale");
@@ -44,6 +46,7 @@ export class MapLocation {
                     let result: any = res.body;
                     this.Articles = result.Articles ? JSON.parse(result.Articles) : [];
                     this.Gallery = result.Gallery ? result.Gallery : [];
+                    this.FlyTo = result.FlyTo == 1 ? true : false;
                     this.Content = result.Content;
                     this.Visited = result.Visited;
                     this.Image = result.Image;

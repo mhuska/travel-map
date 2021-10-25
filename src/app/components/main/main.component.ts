@@ -7,9 +7,14 @@ import Basemap from '@arcgis/core/Basemap';
 import { Store } from '../../data/store.data';
 import { MapLocation } from '../../models/location.model';
 import LabelClass from '@arcgis/core/layers/support/LabelClass';
+import Home from "@arcgis/core/widgets/Home";
+import Viewpoint from "@arcgis/core/Viewpoint";
 
 const pinsUrl: string = "https://slowcamino.com/travel-map/assets/server-php/pins.php";
-const SCALE_BREAKPOINT: number = 9200000;
+
+const MAP_SCALE_BREAKPOINT: number = 9200000;
+const LAYER_SCALE_BREAKPOINT: number = 9245000;
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -78,7 +83,7 @@ export class MainComponent implements OnInit, AfterViewInit {
               }
             
           },
-          minScale: SCALE_BREAKPOINT,
+          minScale: LAYER_SCALE_BREAKPOINT,
           labelPlacement: <"center-right">"center-right",
           labelExpressionInfo: {
             expression: "IIf($feature.Scale=='Zoomed-Out', '', $feature.Title)"
@@ -100,7 +105,7 @@ export class MainComponent implements OnInit, AfterViewInit {
               }
             
           },
-          maxScale: SCALE_BREAKPOINT,
+          maxScale: LAYER_SCALE_BREAKPOINT,
           labelPlacement: <"center-right">"center-right",
           labelExpressionInfo: {
             expression: "IIf($feature.Scale=='Zoomed-In', '' , $feature.Title)"
@@ -156,7 +161,7 @@ export class MainComponent implements OnInit, AfterViewInit {
 
         //Add the zoom action
         this.store.OnZoom = (geometry: any) => {
-          view.goTo(geometry).then(function () { view.zoom = 7; });
+          view.goTo({target: geometry, zoom: 6}, {duration: 2000}) //.then(function () { view.zoom = 6; });
         }
 
         let _updateBasemap = this.UpdateBasemap;
@@ -165,15 +170,31 @@ export class MainComponent implements OnInit, AfterViewInit {
         //Watch the Scale and change basemap when zoomed in
         //Update scale-dependent rendering when scale changes
         view.watch("scale", function (newScale) {
-          if (newScale > SCALE_BREAKPOINT) { //9245000) {
+
+          //console.log(newScale)
+
+          //Change basemaps
+          if (newScale > MAP_SCALE_BREAKPOINT) { //9245000) {
             _updateBasemap(map, view, basemap);
-            _updateRenderer(pointLayer, "ZoomedOut");
           } else {
             _updateBasemap(map, view, "satellite");
+          }
+
+          //Change layer renderer
+          if (newScale > LAYER_SCALE_BREAKPOINT) {
+            _updateRenderer(pointLayer, "ZoomedOut");
+          } else {          
             _updateRenderer(pointLayer, "ZoomedIn");
           }
         });
 
+        //Home button
+        view.ui.add(new Home({
+          view: view,
+          goToOverride: () => {
+            view.goTo({target: [0,0], zoom: 2}, {duration: 2000})
+          }
+        }), "top-right");
           
   }
 

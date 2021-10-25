@@ -23,9 +23,6 @@ export class Store {
             if (this.OnZoom) location.OnZoom = this.OnZoom;
             this.LocationHistory.push(location);
             this.CurrentLocation = location;
-
-            console.log(location)
-
         } else {
             this.CurrentLocation = null;
         }

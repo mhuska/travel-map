@@ -67,4 +67,9 @@ export class GalleryComponent implements OnInit {
     this.store.SetLocation(null);
   }
 
+  ZoomTo() {
+    this.content.ZoomTo();
+    this.hide();
+  }
+
 }

@@ -46,6 +46,7 @@
                 $json = '{
                     "Image":"'.GetImage().'",
                     "Content":"'.str_replace('"', '\"', GetMeta("popup_content")).'",
+                    "FlyTo":'. (GetMeta("fly_to") ? "1" : "0") .',
                     "Visited":"'.GetMeta("visited").'",
                     "Articles":"['.ParsePostIdArrayString(GetMeta("article")).']",
                     "Gallery":'.json_encode($gallery).'
@@ -71,8 +72,14 @@
     //A function to extract post data
     function GetMeta($key) {
         $keyt = trim( $key );
-        $values = array_map( 'trim', get_post_custom_values( $key ) );
-        $value  = implode( ', ', $values );
+        try {
+            $values = array_map( 'trim', get_post_custom_values( $key ) );
+            $value  = implode( ', ', $values );
+        } catch (exception $e) {
+            //Do nothing
+            return "";
+        }
+
         if ($value == null) {
             $value = "";
         }

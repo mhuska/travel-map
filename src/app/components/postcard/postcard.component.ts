@@ -22,9 +22,6 @@ export class PostcardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  ZoomTo() {
-    console.log("zoomto")
-    this.content.ZoomTo();
-  }
+
 
 }

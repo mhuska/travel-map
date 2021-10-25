@@ -50,7 +50,7 @@ html {
   text-align: left;
 }
 
-.esri-zoom {
+.esri-zoom, .esri-home {
   background-color: transparent!important;
   box-shadow: none!important;
   position: absolute;
@@ -58,11 +58,17 @@ html {
   top: 30px;
 }
 
-.esri-zoom .esri-widget--button {
-border-radius: 50% !important;
-box-shadow: 0 4px 10px rgb(0 0 0 / 30%)!important;
-background-color: #fdfeff!important;
-margin-bottom: 5px!important;
+.esri-home {
+  right: 10px;
+}
+
+
+
+.esri-zoom .esri-widget--button, .esri-home.esri-widget--button {
+  border-radius: 50% !important;
+  box-shadow: 0 4px 10px rgb(0 0 0 / 30%)!important;
+  background-color: #fdfeff!important;
+  margin-bottom: 5px!important;
 }
 
 /* hides the default ESRI popup */
