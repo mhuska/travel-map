@@ -27,10 +27,10 @@
 .map-container {
     position: absolute;
     z-index: 0;
-    left: 4%;
+    left: 10%;
     top: 4%;
     height:94%;
-    width: 92%;
+    width: 82%;
     background-color: #d7d1ba;
 }
 

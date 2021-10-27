@@ -33,6 +33,7 @@ html {
     word-wrap: normal;
     height: max-content;
     bottom: 8%!important;
+    left: 5%!important;
     top:unset;
     display:block;
     font-family: 'Parisienne', cursive;
