@@ -7,7 +7,7 @@
         require "/home/wtk3vlq0kjjx/public_html/slowcamino.com/wp-blog-header.php";
         
         //Get the location-pin type posts.
-        $filter  = [ "post_type" => "location-pin" ];
+        $filter  = [ "post_type" => "location-pin", 'posts_per_page' => 10000 ]; //Let's not be stingy!
     
         //Perform the query
         $query = new WP_Query( $filter );
@@ -36,7 +36,6 @@
                         "Title":"'.get_the_title().'",
                         "Scale":"'.GetMeta("scale_dependency").'",
                         "Marker":"'.GetMeta("marker_type").'",
-                        "Date":"'.get_the_date().'",
                         "DaysSince":'.date_diff(date_create(get_the_date()), new DateTime())->format("%a").',
                         "PostId":'.get_the_ID().'
                     }}';

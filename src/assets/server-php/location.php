@@ -73,8 +73,12 @@
     function GetMeta($key) {
         $keyt = trim( $key );
         try {
-            $values = array_map( 'trim', get_post_custom_values( $key ) );
-            $value  = implode( ', ', $values );
+            $val_arr = get_post_custom_values( $key );
+            if ($val_arr!=null) {
+                $values = array_map( 'trim', get_post_custom_values( $key ) );
+                $value  = implode( ', ', $values ); 
+            }
+
         } catch (exception $e) {
             //Do nothing
             return "";

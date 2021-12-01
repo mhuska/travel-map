@@ -8,7 +8,6 @@ import { Store } from '../../data/store.data';
 import { MapLocation } from '../../models/location.model';
 import LabelClass from '@arcgis/core/layers/support/LabelClass';
 import Home from "@arcgis/core/widgets/Home";
-import Viewpoint from "@arcgis/core/Viewpoint";
 
 const pinsUrl: string = "https://slowcamino.com/travel-map/assets/server-php/pins.php";
 
