@@ -131,7 +131,8 @@ export class MainComponent implements OnInit, AfterViewInit {
         //View
         const view = new MapView({
           map: map,
-          center: [0, 0], // Longitude, latitude
+          center: [-65.1, -25.4], // Longitude, latitude
+          zoom: 3,
           constraints: {
             minZoom: 2,
             rotationEnabled: false,          
@@ -213,14 +214,14 @@ export class MainComponent implements OnInit, AfterViewInit {
     const x_5_url = "./assets/symbols/pirate-x-5b.png";
 
     const dateConfig = [
-      {days: 30, marker: "x-1"},
-      {days: 60, marker: "x-2"},
+      {days: 30, marker: "x-5"},
+      {days: 60, marker: "x-4"},
       {days: 90, marker: "x-3"},
-      {days: 180, marker: "x-4"},
-      {days: 365, marker: "x-5"}
+      {days: 180, marker: "x-2"},
+      {days: 365, marker: "x-1"}
     ]
 
-    let dateExp: string = "When(" + dateConfig.map(c => `$feature.DaysSince < ${c.days}, '${c.marker}'`).join() + ", 'x-5')";
+    let dateExp: string = "When(" + dateConfig.map(c => `$feature.DaysSince < ${c.days}, '${c.marker}'`).join() + ", 'x-1')";
     let markerTypeExp: string = `When($feature.Marker=='red', ${dateExp}, $feature.Marker)`;
     let expression;
     if (mode == "ZoomedIn") {
@@ -234,7 +235,7 @@ export class MainComponent implements OnInit, AfterViewInit {
         valueExpression: expression,
         defaultSymbol: {
           type: "picture-marker",
-          url: x_5_url,
+          url: x_1_url,
           width: marker_size,
           height: marker_size,
         },
