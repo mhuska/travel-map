@@ -231,6 +231,21 @@ export class MainComponent implements OnInit, AfterViewInit {
     }
 
     layer.renderer = {
+      type: "simple",
+      symbol:  {
+        type: "simple-marker",
+        style: "cross",
+        angle: 45,
+        outline: {
+          color: "red",
+          width: 4
+        }
+
+      }
+    }
+
+    /*
+    layer.renderer = {
         type: "unique-value",
         valueExpression: expression,
         defaultSymbol: {
@@ -298,6 +313,7 @@ export class MainComponent implements OnInit, AfterViewInit {
         }
       ]
       };
+      */
     }
 
 }

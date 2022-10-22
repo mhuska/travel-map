@@ -25,7 +25,9 @@ body,
 
 html {
   overflow: hidden;
+  scroll-behavior: smooth;
 }
+
 
 .esri-attribution {
     background-color: transparent;

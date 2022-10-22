@@ -1,22 +1,4 @@
 
-<div class="main-container">
-    <div class="map">
-
-        <!--The outline-->
-        <picture >
-            <source srcset="./assets/images/map-outline.webp"
-            media="(min-width: 400px)" type="image/webp">
-            <img src="./assets/images/map-outline.png" class="img-cutout" alt="" />
-        </picture>
-
-        <!--The Map Container-->
-        <div class="map-container" id="map-container" #mapViewNode></div>
-    </div>
-
-    <app-gallery></app-gallery>
-</div>
-
-
 <div class="info-section">
     <div class="info-container">
         <!--background-->
@@ -48,9 +30,33 @@
             <p>
                 <small>*HINT: Use two fingers to move the map on touch screens.</small>
             </p>
+
+            <div style="text-align:center;">
+                <button class="down-btn"><a href="#map-container"><img src="./assets/images/down-arrow.png"></a></button>
+            </div>
            
         </div>
     </div>
 </div>
+
+
+<div class="main-container">
+    <div class="map">
+
+        <!--The outline-->
+        <picture >
+            <source srcset="./assets/images/map-outline.webp"
+            media="(min-width: 400px)" type="image/webp">
+            <img src="./assets/images/map-outline.png" class="img-cutout" alt="" />
+        </picture>
+
+        <!--The Map Container-->
+        <div class="map-container" id="map-container" #mapViewNode></div>
+    </div>
+
+    <app-gallery></app-gallery>
+</div>
+
+
 
 
