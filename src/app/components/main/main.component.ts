@@ -10,6 +10,7 @@ import LabelClass from '@arcgis/core/layers/support/LabelClass';
 import Home from "@arcgis/core/widgets/Home";
 
 const pinsUrl: string = "https://slowcamino.com/travel-map/assets/server-php/pins.php";
+const linesUrl: string = "https://slowcamino.com/travel-map/assets/server-php/connections.php";
 
 const MAP_SCALE_BREAKPOINT: number = 9200000;
 const LAYER_SCALE_BREAKPOINT: number = 9245000;
@@ -121,11 +122,28 @@ export class MainComponent implements OnInit, AfterViewInit {
         });
         this.UpdateRenderer(pointLayer, "ZoomedOut"); //Set the renderer
         
+        //Line Layer
+        const lineLayer = new GeoJSONLayer({
+          url: linesUrl,
+          outFields: ["*"],
+          copyright: "Slow Camino",
+          popupTemplate: null,
+          renderer: <any>{
+            type: "simple",
+            symbol: {
+              type: "simple-line",
+              width: 3,
+              color: [200, 18, 18, 1],
+              style: "short-dot",
+            }
+          }
+        });
+        
                    
         //Map       
         const map = new Map({
           basemap: <string | Basemap> "satellite",
-          layers: [ pointLayer]
+          layers: [ lineLayer, pointLayer ]
         });
 
         //View
