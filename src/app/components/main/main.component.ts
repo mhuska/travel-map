@@ -9,8 +9,8 @@ import { MapLocation } from '../../models/location.model';
 import LabelClass from '@arcgis/core/layers/support/LabelClass';
 import Home from "@arcgis/core/widgets/Home";
 
-const pinsUrl: string = "https://slowcamino.com/travel-map/assets/server-php/pins.php";
-const linesUrl: string = "https://slowcamino.com/travel-map/assets/server-php/connections.php";
+const pinsUrl: string = "https://slowcamino.com/travel-map/assets/server-php/cache_pins.php";
+const linesUrl: string = "https://slowcamino.com/travel-map/assets/server-php/cache_connections.php";
 
 const MAP_SCALE_BREAKPOINT: number = 9200000;
 const LAYER_SCALE_BREAKPOINT: number = 9245000;
