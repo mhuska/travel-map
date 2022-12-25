@@ -4,11 +4,13 @@ import TileLayer from '@arcgis/core/layers/TileLayer';
 import Map from '@arcgis/core/Map';
 import MapView from '@arcgis/core/views/MapView';
 import Basemap from '@arcgis/core/Basemap';
+import CIMSymbol from "@arcgis/core/symbols/CIMSymbol";
 import { Store } from '../../data/store.data';
 import { MapLocation } from '../../models/location.model';
 import LabelClass from '@arcgis/core/layers/support/LabelClass';
 import Home from "@arcgis/core/widgets/Home";
 import { ActivatedRoute } from '@angular/router';
+import { POINT_X } from 'src/app/models/cim-x';
 
 const pinsCache: string = "https://slowcamino.com/travel-map/assets/server-php/cache_pins.php";
 const linesCache: string = "https://slowcamino.com/travel-map/assets/server-php/cache_connections.php";
@@ -34,12 +36,6 @@ export class MainComponent implements OnInit, AfterViewInit {
   }
 
   constructor(private store: Store, private router: ActivatedRoute) {
-
-    this.router.queryParams.subscribe({
-      next: (params) => {
-        this.LoadMap();
-      }
-    })
   }
 
   ngOnInit(): void {
@@ -250,6 +246,11 @@ export class MainComponent implements OnInit, AfterViewInit {
   UpdateRenderer(layer: any, mode: "ZoomedIn" | "ZoomedOut") {
 
     const marker_size = "26px"; // mode=="ZoomedIn" ? "42px" : "26px";
+
+    const COLOR_OLD = [255, 200, 200];
+    const COLOR_NEW = [100, 0, 0];
+
+    /*
     const x_1_url = "./assets/symbols/pirate-x-1b.png";
     const x_2_url = "./assets/symbols/pirate-x-2b.png";
     const x_3_url = "./assets/symbols/pirate-x-3b.png";
@@ -263,8 +264,11 @@ export class MainComponent implements OnInit, AfterViewInit {
       { days: 180, marker: "x-2" },
       { days: 365, marker: "x-1" }
     ]
+    */
 
-    let dateExp: string = "When(" + dateConfig.map(c => `$feature.DaysSince < ${c.days}, '${c.marker}'`).join() + ", 'x-1')";
+    let dateExp: string = `var d = $feature.DaysSince;
+    return [100 + 155 * d / 365, 0 + 155 * d / 365, 0 + 155 * d / 365];`;
+   // let dateExp: string = "When(" + dateConfig.map(c => `$feature.DaysSince < ${c.days}, '${c.marker}'`).join() + ", 'x-1')";
     let markerTypeExp: string = `When($feature.Marker=='red', ${dateExp}, $feature.Marker)`;
     let expression;
     if (mode == "ZoomedIn") {
@@ -273,73 +277,30 @@ export class MainComponent implements OnInit, AfterViewInit {
       expression = `When($feature.Scale=='Zoomed-Out' || $feature.Scale=='All', ${markerTypeExp}, 'Hidden')`
     }
 
+    let cimSymbol = new CIMSymbol({
+      data: {
+        type: "CIMSymbolReference",
+        symbol: <any>JSON.stringify(POINT_X),
+        /*
+        primitiveOverrides: [{
+          type: "CIMPrimitiveOverride",
+          primitiveName: "CIMSolidFill", // the name of the symbol layer we want to override
+          propertyName: "Color", // the name of the property on the symbol layer we want to override
+          valueExpressionInfo: {
+            type: "CIMExpressionInfo",
+            title: "Color override",
+            expression: dateExp// the expression to change the size of the symbol
+          }
+        }]*/
+      }
+    });
+
     layer.renderer = {
       type: "unique-value",
-      valueExpression: expression,
-      defaultSymbol: {
-        type: "picture-marker",
-        url: x_1_url,
-        width: marker_size,
-        height: marker_size,
-      },
-      uniqueValueInfos: [
-        {
-          value: "Hidden",
-          symbol: {
-            type: "simple-marker",
-            color: [0, 0, 0, 0],
-            outline: {
-              width: 0.5, color: [0, 0, 0, 0]
-            }
-          }
-        }
-        , {
-          value: "x-1",
-          symbol: {
-            type: "picture-marker",
-            url: x_1_url,
-            width: marker_size,
-            height: marker_size,
-          },
-          label: "Red"
-        }, {
-          value: "x-2",
-          symbol: {
-            type: "picture-marker",
-            url: x_2_url,
-            width: marker_size,
-            height: marker_size,
-          },
-          label: "Red"
-        }, {
-          value: "x-3",
-          symbol: {
-            type: "picture-marker",
-            url: x_3_url,
-            width: marker_size,
-            height: marker_size,
-          },
-          label: "Red"
-        }, {
-          value: "x-4",
-          symbol: {
-            type: "picture-marker",
-            url: x_4_url,
-            width: marker_size,
-            height: marker_size,
-          },
-          label: "Red"
-        }, {
-          value: "x-5",
-          symbol: {
-            type: "picture-marker",
-            url: x_5_url,
-            width: marker_size,
-            height: marker_size,
-          },
-          label: "Red"
-        }
-      ]
+      //valueExpression: expression,
+      defaultSymbol: cimSymbol,
+      haloColor: [255, 255, 255, 0.7],
+      haloSize: "5px",
     };
   }
 
