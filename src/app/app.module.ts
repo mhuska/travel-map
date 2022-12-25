@@ -14,6 +14,7 @@ import { PostcardComponent } from './components/postcard/postcard.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { PhotoComponent } from './components/photo/photo.component';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
     SwiperModule,
     HttpClientModule,
     SharedDataModule.forRoot(),
+    RouterModule.forRoot([]),
   ],
   providers: [],
   bootstrap: [AppComponent]
