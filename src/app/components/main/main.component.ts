@@ -153,15 +153,7 @@ export class MainComponent implements OnInit, AfterViewInit {
       outFields: ["*"],
       copyright: "Slow Camino",
       popupTemplate: null,
-      renderer: <any>{
-        type: "simple",
-        symbol: {
-          type: "simple-line",
-          width: 3,
-          color: [200, 18, 18, 1],
-          style: "short-dot",
-        }
-      }
+      renderer: this.GetLineRenderer()
     });
 
 
@@ -257,8 +249,8 @@ export class MainComponent implements OnInit, AfterViewInit {
     const x_5_url = "./assets/symbols/pirate-x-5b.png";
 
     const dateConfig = [
-      { days: 30, marker: "x-5" },
-      { days: 60, marker: "x-4" },
+      { days: 14, marker: "x-5" },
+      { days: 45, marker: "x-4" },
       { days: 90, marker: "x-3" },
       { days: 180, marker: "x-2" },
       { days: 365, marker: "x-1" }
@@ -341,6 +333,42 @@ export class MainComponent implements OnInit, AfterViewInit {
         }
       ]
     };
+  }
+
+  GetLineRenderer():any {
+    const COLOR_OLD = [255, 200, 200];
+    const COLOR_NEW = [100, 0, 0];
+
+    return {
+      type: "simple",
+      symbol: {
+        type: "simple-line",
+        width: 3,
+        color: [200, 18, 18, 1],
+        style: "short-dot",
+      },
+      visualVariables: [
+        {
+          type: "color", 
+          field: "DaysSince", 
+          stops: [
+            {
+              value: 0, 
+              color: "#a30707", 
+            },
+            {
+              value: 60,
+              color: "#ff0000",
+            },
+            {
+              value: 180, 
+              color: "#F8D1CD" , 
+            }
+          ]
+        }
+      ]
+    };
+
   }
 
 }
