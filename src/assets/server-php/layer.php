@@ -89,7 +89,8 @@
                                                 "longitude" => GetMeta("longitude"),
                                                 "latitude" => GetMeta("latitude"),
                                                 "DaysSince" => date_diff(date_create(get_the_date()), new DateTime())->format("%a"),
-                                                "last_location_id" => trim(GetMeta("last_location"))
+                                                "last_location_id" => trim(GetMeta("last_location")),
+                                                "travel_mode" => trim(GetMeta("travel_mode"))
                                             ];
                        
             }
@@ -113,7 +114,7 @@
                         }
                         
                         $feature = $feature.'{ "type" : "Feature", "geometry": {"type":"LineString","coordinates":[['.$last["longitude"].','.$last["latitude"].'],['.$value["longitude"].','.$value["latitude"].']]},';
-                        $feature = $feature.'"properties":{ "DaysSince": '.$last["DaysSince"].' }}';
+                        $feature = $feature.'"properties":{ "DaysSince": '.$last["DaysSince"].', "TravelMode": "' . $value["travel_mode"] . '" }}';
                         
                         //concatenate the feature
                         $json = $json.$feature;

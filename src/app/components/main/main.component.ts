@@ -111,7 +111,7 @@ export class MainComponent implements OnInit, AfterViewInit {
       minScale: LAYER_SCALE_BREAKPOINT,
       labelPlacement: <"center-right">"center-right",
       labelExpressionInfo: {
-        expression: "IIf($feature.Scale=='Zoomed-Out', '', $feature.Title)"
+        expression: "IIf($feature.Scale=='Zoomed-Out' || $feature.Marker=='hidden', '', $feature.Title)"
       }
     });
 
@@ -133,7 +133,29 @@ export class MainComponent implements OnInit, AfterViewInit {
       maxScale: LAYER_SCALE_BREAKPOINT,
       labelPlacement: <"center-right">"center-right",
       labelExpressionInfo: {
-        expression: "IIf($feature.Scale=='Zoomed-In', '' , $feature.Title)"
+        expression: "IIf($feature.Scale=='Zoomed-In' || $feature.Marker=='hidden', '' , $feature.Title)"
+      }
+    });
+
+    const ConnectionLabels = new LabelClass({
+      // autocasts as new LabelClass()
+      symbol: {
+        type: "text",  // autocasts as new TextSymbol()
+        color: "#ff0000",
+        haloColor: [255, 255, 255, 0.6],
+        haloSize: "2px",
+        font: {
+          family: "Arial",
+          style: "normal",
+          weight: "normal",
+          size: 7,
+        }
+
+      },
+      
+      labelPlacement: <"below-center">"below-center",
+      labelExpressionInfo: {
+        expression: "$feature.TravelMode"
       }
     });
 
@@ -148,19 +170,29 @@ export class MainComponent implements OnInit, AfterViewInit {
     this.UpdateRenderer(pointLayer, "ZoomedOut"); //Set the renderer
 
     //Line Layer
-    const lineLayer = new GeoJSONLayer({
+    const lineLayerFlights = new GeoJSONLayer({
       url: this.linesUrl,
       outFields: ["*"],
       copyright: "Slow Camino",
       popupTemplate: null,
-      renderer: this.GetLineRenderer()
+      //labelingInfo: [ConnectionLabels],
+      renderer: this.GetLineRenderer("flight")
+    });
+
+    const lineLayerLand = new GeoJSONLayer({
+      url: this.linesUrl,
+      outFields: ["*"],
+      copyright: "Slow Camino",
+      popupTemplate: null,
+      //labelingInfo: [ConnectionLabels],
+      renderer: this.GetLineRenderer("land")
     });
 
 
     //Map       
     const map = new Map({
       basemap: <string | Basemap>"satellite",
-      layers: [lineLayer, pointLayer]
+      layers: [lineLayerFlights, lineLayerLand, pointLayer]
     });
 
     //View
@@ -285,7 +317,20 @@ export class MainComponent implements OnInit, AfterViewInit {
             }
           }
         }
-        , {
+        , 
+        {
+          value: "hidden",
+          symbol: {
+            type: "simple-marker",
+            color: [0, 0, 0, 0],
+            outline: {
+              width: 0.5, color: [0, 0, 0, 0]
+            }
+          },
+          label: "Red"
+        }
+        ,
+        {
           value: "x-1",
           symbol: {
             type: "picture-marker",
@@ -335,23 +380,29 @@ export class MainComponent implements OnInit, AfterViewInit {
     };
   }
 
-  GetLineRenderer():any {
-    const COLOR_OLD = [255, 200, 200];
-    const COLOR_NEW = [100, 0, 0];
+  GetLineRenderer(travelMode: "flight" | "land"):any {
+    
+    let exp = travelMode == "flight" ?
+        `When(Find("Flight",$feature.TravelMode)==-1, -1, $feature.DaysSince)` :
+        `When(Find("Flight",$feature.TravelMode)==-1, $feature.DaysSince, -1)`;
 
     return {
       type: "simple",
       symbol: {
         type: "simple-line",
-        width: 3,
+        width: travelMode == "flight" ? 3 : 2,
         color: [200, 18, 18, 1],
-        style: "short-dot",
+        style: (travelMode == "flight" ? "short-dot" : "solid"),
       },
       visualVariables: [
         {
-          type: "color", 
-          field: "DaysSince", 
+          type: "color",  
+          valueExpression: exp,
           stops: [
+            {
+              value: -1,
+              color: "transparent",
+            },
             {
               value: 0, 
               color: "#a30707", 
