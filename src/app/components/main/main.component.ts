@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import GeoJSONLayer from '@arcgis/core/layers/GeoJSONLayer';
+import FeatureLayer from '@arcgis/core/layers/FeatureLayer';
 import TileLayer from '@arcgis/core/layers/TileLayer';
 import Map from '@arcgis/core/Map';
 import MapView from '@arcgis/core/views/MapView';
@@ -159,6 +160,11 @@ export class MainComponent implements OnInit, AfterViewInit {
       }
     });
 
+    //Boundary "Base" Layer
+    const boundaryLayer = new FeatureLayer({
+      url: "https://server.arcgisonline.com/arcgis/rest/services/Reference/World_Reference_Overlay/MapServer/0",
+    });
+
     //Point Layer
     const pointLayer = new GeoJSONLayer({
       url: this.pinsUrl,
@@ -192,7 +198,7 @@ export class MainComponent implements OnInit, AfterViewInit {
     //Map       
     const map = new Map({
       basemap: <string | Basemap>"satellite",
-      layers: [lineLayerFlights, lineLayerLand, pointLayer]
+      layers: [boundaryLayer, lineLayerFlights, lineLayerLand, pointLayer]
     });
 
     //View
