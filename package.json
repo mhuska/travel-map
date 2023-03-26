@@ -18,7 +18,7 @@
     "@angular/platform-browser": "~13.3.12",
     "@angular/platform-browser-dynamic": "~13.3.12",
     "@angular/router": "~13.3.12",
-    "@arcgis/core": "^4.25.5",
+    "@arcgis/core": "^4.26.5",
     "rxjs": "~6.6.0",
     "swiper": "^8.4.5",
     "tslib": "^2.1.0",
