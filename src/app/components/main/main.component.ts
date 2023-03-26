@@ -68,13 +68,31 @@ export class MainComponent implements OnInit, AfterViewInit {
     this.ResolveLayerURLS();
 
     //Basmap
-    let basemap: Basemap = new Basemap({
+    let basemap1 = new Basemap({
       baseLayers: [
         new TileLayer({
           url: "https://tiles.arcgis.com/tiles/nGt4QxSblgDfeJn9/arcgis/rest/services/VintageShadedRelief/MapServer",
           title: "Basemap"
         }),
+        new TileLayer({
+          url: "https://server.arcgisonline.com/arcgis/rest/services/Reference/World_Boundaries_and_Places/MapServer",
+          title: "Boundaries"
+        })
+      ],
+      title: "basemap",
+      id: "basemap"
+    });
 
+    let basemap2 = new Basemap({
+      baseLayers: [
+        new TileLayer({
+          url: "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+          title: "Basemap"
+        }),
+        new TileLayer({
+          url: "https://server.arcgisonline.com/arcgis/rest/services/Reference/World_Boundaries_and_Places/MapServer",
+          title: "Boundaries"
+        })
       ],
       title: "basemap",
       id: "basemap"
@@ -85,13 +103,6 @@ export class MainComponent implements OnInit, AfterViewInit {
       title: "{Title}",
       content: "<img src='{Image}' width='200px'><a href='{ArticleURL}' target='_blank'>read more...</a>",
     };
-
-    //Basemap labels
-    /*
-    const labelsLayer = new TileLayer({
-      url: "http://services.arcgisonline.com/arcgis/rest/services/Reference/World_Boundaries_and_Places/MapServer",
-      minScale: 9200000
-    })*/
 
     //Point Labels
     const ZIPointLabels = new LabelClass({
@@ -161,9 +172,10 @@ export class MainComponent implements OnInit, AfterViewInit {
     });
 
     //Boundary "Base" Layer
+    /*
     const boundaryLayer = new FeatureLayer({
       url: "https://server.arcgisonline.com/arcgis/rest/services/Reference/World_Reference_Overlay/MapServer/0",
-    });
+    });*/
 
     //Point Layer
     const pointLayer = new GeoJSONLayer({
@@ -198,7 +210,7 @@ export class MainComponent implements OnInit, AfterViewInit {
     //Map       
     const map = new Map({
       basemap: <string | Basemap>"satellite",
-      layers: [boundaryLayer, lineLayerFlights, lineLayerLand, pointLayer]
+      layers: [lineLayerFlights, lineLayerLand, pointLayer]
     });
 
     //View
@@ -248,9 +260,9 @@ export class MainComponent implements OnInit, AfterViewInit {
 
       //Change basemaps
       if (newScale > MAP_SCALE_BREAKPOINT) { //9245000) {
-        _updateBasemap(map, view, basemap);
+        _updateBasemap(map, view, basemap1);
       } else {
-        _updateBasemap(map, view, "satellite");
+        _updateBasemap(map, view, basemap2);
       }
 
       //Change layer renderer
