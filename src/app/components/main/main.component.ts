@@ -171,12 +171,6 @@ export class MainComponent implements OnInit, AfterViewInit {
       }
     });
 
-    //Boundary "Base" Layer
-    /*
-    const boundaryLayer = new FeatureLayer({
-      url: "https://server.arcgisonline.com/arcgis/rest/services/Reference/World_Reference_Overlay/MapServer/0",
-    });*/
-
     //Point Layer
     const pointLayer = new GeoJSONLayer({
       url: this.pinsUrl,
