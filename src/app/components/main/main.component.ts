@@ -309,86 +309,91 @@ export class MainComponent implements OnInit, AfterViewInit {
       expression = `When($feature.Scale=='Zoomed-Out' || $feature.Scale=='All', ${markerTypeExp}, 'Hidden')`
     }
 
+    let uniqueValueInfos =  [
+      {
+        value: "Hidden",
+        symbol: {
+          type: "simple-marker",
+          color: [0, 0, 0, 0],
+          outline: {
+            width: 0.5, color: [0, 0, 0, 0]
+          }
+        }
+      }
+      , 
+      {
+        value: "hidden",
+        symbol: {
+          type: "simple-marker",
+          color: [0, 0, 0, 0],
+          outline: {
+            width: 0.5, color: [0, 0, 0, 0]
+          }
+        },
+        label: "Red"
+      }
+      ,
+      {
+        value: "x-1",
+        symbol: {
+          type: "picture-marker",
+          url: x_1_url,
+          width: marker_size,
+          height: marker_size,
+        },
+        label: "Red"
+      }, {
+        value: "x-2",
+        symbol: {
+          type: "picture-marker",
+          url: x_2_url,
+          width: marker_size,
+          height: marker_size,
+        },
+        label: "Red"
+      }, {
+        value: "x-3",
+        symbol: {
+          type: "picture-marker",
+          url: x_3_url,
+          width: marker_size,
+          height: marker_size,
+        },
+        label: "Red"
+      }, {
+        value: "x-4",
+        symbol: {
+          type: "picture-marker",
+          url: x_4_url,
+          width: marker_size,
+          height: marker_size,
+        },
+        label: "Red"
+      }, {
+        value: "x-5",
+        symbol: {
+          type: "picture-marker",
+          url: x_5_url,
+          width: marker_size,
+          height: marker_size,
+        },
+        label: "Red"
+      }
+    ];
+
+    uniqueValueInfos = uniqueValueInfos.reverse();
+
     layer.renderer = {
       type: "unique-value",
       valueExpression: expression,
+      orderByClassesEnabled: true,
       defaultSymbol: {
         type: "picture-marker",
         url: x_1_url,
         width: marker_size,
         height: marker_size,
       },
-      uniqueValueInfos: [
-        {
-          value: "Hidden",
-          symbol: {
-            type: "simple-marker",
-            color: [0, 0, 0, 0],
-            outline: {
-              width: 0.5, color: [0, 0, 0, 0]
-            }
-          }
-        }
-        , 
-        {
-          value: "hidden",
-          symbol: {
-            type: "simple-marker",
-            color: [0, 0, 0, 0],
-            outline: {
-              width: 0.5, color: [0, 0, 0, 0]
-            }
-          },
-          label: "Red"
-        }
-        ,
-        {
-          value: "x-1",
-          symbol: {
-            type: "picture-marker",
-            url: x_1_url,
-            width: marker_size,
-            height: marker_size,
-          },
-          label: "Red"
-        }, {
-          value: "x-2",
-          symbol: {
-            type: "picture-marker",
-            url: x_2_url,
-            width: marker_size,
-            height: marker_size,
-          },
-          label: "Red"
-        }, {
-          value: "x-3",
-          symbol: {
-            type: "picture-marker",
-            url: x_3_url,
-            width: marker_size,
-            height: marker_size,
-          },
-          label: "Red"
-        }, {
-          value: "x-4",
-          symbol: {
-            type: "picture-marker",
-            url: x_4_url,
-            width: marker_size,
-            height: marker_size,
-          },
-          label: "Red"
-        }, {
-          value: "x-5",
-          symbol: {
-            type: "picture-marker",
-            url: x_5_url,
-            width: marker_size,
-            height: marker_size,
-          },
-          label: "Red"
-        }
-      ]
+      uniqueValueInfos: uniqueValueInfos,
     };
   }
 
