@@ -2,7 +2,7 @@ import { IGraphic } from "./graphic.model";
 import { IWPPost } from "./post.model";
 import { HttpClient } from '@angular/common/http';
 
-const locationUrl: string = "https://slowcamino.com/travel-map/assets/server-php/location.php";
+const locationUrl: string = "https://slowcamino.com/travel-map/assets/server-php/cache_locationinfo.php";
 
 export class MapLocation {
 

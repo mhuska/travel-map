@@ -1,11 +1,17 @@
 <?php
 
 
+    require "./utilities.php";
+    require GetBaseURL()."/wp-blog-header.php";
+    
+    function GetBaseURL2()
+    {
+        return GetBaseURL();
+    }
+
     //Function to Create the GeoJSON layer
     function BuildJsonLayer($layerType) {
     
-        require "/home/wtk3vlq0kjjx/public_html/slowcamino.com/wp-blog-header.php";
-        require "./utilities.php";
         
         //Get the location-pin type posts.
         $filter  = [ "post_type" => "location-pin", 'posts_per_page' => 10000 ]; //Let's not be stingy!
@@ -51,7 +57,7 @@
         } else {
             // no posts found
             //echo "no posts";
-        }
+        }        
         
         /* Restore original Post Data */
         wp_reset_postdata();
@@ -64,8 +70,6 @@
     
     function BuildJsonConnectionsLayer() {
         
-        require "/home/wtk3vlq0kjjx/public_html/slowcamino.com/wp-blog-header.php";
-        require "./utilities.php";
         
         //Get the location-pin type posts.
         $filter  = [ "post_type" => "location-pin", 'posts_per_page' => 10000 ]; //Let's not be stingy!
@@ -137,6 +141,9 @@
     
         return $json;
     }
+
+        
+
 
     
 ?>

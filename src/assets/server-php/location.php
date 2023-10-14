@@ -1,28 +1,34 @@
 <?php
 
     
+        require "./utilities.php";
+        require  GetBaseURL()."/wp-blog-header.php";
 
+    function GetBaseURL2()
+    {
+        return GetBaseURL();
+    }
+    
     /*
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
     */
     
-    //Get the ID
-    $postid = $_GET["id"];
-    
-    //Create the JSON
-    header('Content-Type: application/json');
-    header("Access-Control-Allow-Origin: *");
-    echo GetLocationData($postid);
-    http_response_code(200);
-    
+    //Get the ID and return the location
+    if (!empty($_GET['id'])) {
+        $postid = $_GET["id"];
+        header('Content-Type: application/json');
+        header("Access-Control-Allow-Origin: *");
+        echo GetLocationData($postid);
+        http_response_code(200);
+    }
+
 
     //Function to Create the GeoJSON layer
     function GetLocationData($PostId) {
     
-        require "/home/wtk3vlq0kjjx/public_html/slowcamino.com/wp-blog-header.php";
-        require "./utilities.php";
+        require   GetBaseURL()."/wp-blog-header.php";
         
        //Get the location-pin type posts.
         $filter  = [ "post_type" => "location-pin" , "p" => $PostId ];
@@ -70,6 +76,48 @@
         $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumbnail-size', true);
         $thumb_url = $thumb_url_array[0];
         return $thumb_url;
+    }
+
+    
+    function OutputAllLocationJsons() {
+        
+        
+        //Get the location-pin type posts.
+        $filter  = [ "post_type" => "location-pin", 'posts_per_page' => 10000 ]; //Let's not be stingy!
+    
+        //Perform the query
+        $query = new WP_Query( $filter );
+        
+        
+        $i = 0;
+        if ( $query->have_posts() ) {
+            while ( $query->have_posts() ) {
+                $query->the_post();
+
+                //Initialize the JSON
+                $id = get_the_ID();
+                $json = GetLocationData($id);
+
+                //Save to json file
+                file_put_contents(
+                    GetBaseURL().'/travel-map/assets/locations/'.$id.'.json',
+                    $json,
+                    $flags = 0,
+                    $context = null
+                );
+
+         
+                $i++; //Increment index
+            }
+        } else {
+            // no posts found
+            //echo "no posts";
+        }
+        
+        /* Restore original Post Data */
+        wp_reset_postdata();
+    
+        return $json;
     }
 
 ?>

@@ -1,4 +1,9 @@
 <?php
+
+    function GetBaseURL() {
+        $var = "/home/wtk3vlq0kjjx/public_html/slowcamino.com";
+        return $var;
+    }
  
  //A function to extract post data
  function GetMeta($key) {
