@@ -1,0 +1,494 @@
+
+{"type":"FeatureCollection", "features":[{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-85.6447097,9.9679361]},"properties":{
+                        "Title":"Nosara",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":101,
+                        "PostId":5755
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-84.8126614,10.3013224]},"properties":{
+                        "Title":"Monteverde",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":107,
+                        "PostId":5744
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-83.9311858,9.6447246]},"properties":{
+                        "Title":"Santa Maria de Dota",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":111,
+                        "PostId":5736
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-84.0978113,9.9719246]},"properties":{
+                        "Title":"San Jose",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":115,
+                        "PostId":5719
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-78.5129334,-0.2268292]},"properties":{
+                        "Title":"Quito (end of road trip)",
+                        "Scale":"All",
+                        "Marker":"hidden",
+                        "DaysSince":118,
+                        "PostId":5674
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-79.1427334,-0.2723742]},"properties":{
+                        "Title":"Santo Domingo",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":119,
+                        "PostId":5673
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-80.777194,-1.3490046]},"properties":{
+                        "Title":"Puerto Cayo",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":120,
+                        "PostId":5672
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-80.8280471,-1.5543745]},"properties":{
+                        "Title":"Puerto Lopez",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":122,
+                        "PostId":5595
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-81.0878692,-1.2739012]},"properties":{
+                        "Title":"Isla de la Plata",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":123,
+                        "PostId":5671
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-79.224538,-2.7832276]},"properties":{
+                        "Title":"Parque Nacional Cajas",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":125,
+                        "PostId":5581
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-79.0237104,-2.8993726]},"properties":{
+                        "Title":"Cuenca",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":126,
+                        "PostId":5549
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-78.7359613,-1.6660801]},"properties":{
+                        "Title":"Riobamba (pass through)",
+                        "Scale":"All",
+                        "Marker":"hidden",
+                        "DaysSince":127,
+                        "PostId":5551
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-78.656822,-1.9668381]},"properties":{
+                        "Title":"Andean Countryside",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":127,
+                        "PostId":5541
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-78.0193621,-1.4870382]},"properties":{
+                        "Title":"Puyo City (pass through)",
+                        "Scale":"All",
+                        "Marker":"hidden",
+                        "DaysSince":129,
+                        "PostId":5550
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-78.8391301,-1.4978609]},"properties":{
+                        "Title":"Chimborazo (pass through)",
+                        "Scale":"All",
+                        "Marker":"hidden",
+                        "DaysSince":129,
+                        "PostId":5525
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-78.4211154,-1.3963247]},"properties":{
+                        "Title":"Baños",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":129,
+                        "PostId":5509
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-77.912103,-1.6283269]},"properties":{
+                        "Title":"Puyo",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":131,
+                        "PostId":5493
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-77.6715245,-1.0356499]},"properties":{
+                        "Title":"Puerto Misahualli",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":132,
+                        "PostId":5475
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-77.8354743,-0.9974738]},"properties":{
+                        "Title":"Tena (pass through)",
+                        "Scale":"All",
+                        "Marker":"hidden",
+                        "DaysSince":135,
+                        "PostId":5473
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-77.8950563,-0.4627641]},"properties":{
+                        "Title":"Baeza",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":135,
+                        "PostId":5439
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-78.1630386,-0.3686339]},"properties":{
+                        "Title":"Papallacta",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":137,
+                        "PostId":5416
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-78.5178322,0.4001197]},"properties":{
+                        "Title":"Rio Lindo Coffee Farm",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":149,
+                        "PostId":5345
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-78.280764,0.23333]},"properties":{
+                        "Title":"Otavalo (waypoint)",
+                        "Scale":"All",
+                        "Marker":"hidden",
+                        "DaysSince":152,
+                        "PostId":5339
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-78.7825216,-0.0487316]},"properties":{
+                        "Title":"Mindo",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":152,
+                        "PostId":5197
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-78.5025412,-0.2158701]},"properties":{
+                        "Title":"Quito",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":159,
+                        "PostId":5196
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-76.5362595,3.4476674]},"properties":{
+                        "Title":"Cali",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":161,
+                        "PostId":4775
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-75.7111667,4.3366058]},"properties":{
+                        "Title":"Pijao",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":162,
+                        "PostId":1663
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-75.5344847,4.847598]},"properties":{
+                        "Title":"Termales San Vicente",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":168,
+                        "PostId":1882
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-75.6696588,4.6757833]},"properties":{
+                        "Title":"Filandia",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":171,
+                        "PostId":4963
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-75.5727566,4.6372823]},"properties":{
+                        "Title":"Salento",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":175,
+                        "PostId":1660
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-75.8296608,5.5967883]},"properties":{
+                        "Title":"Jardin",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":181,
+                        "PostId":4856
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-75.8060523,4.8423387]},"properties":{
+                        "Title":"Pereira",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":181,
+                        "PostId":4837
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-74.0871505,4.5963988]},"properties":{
+                        "Title":"Bogotá",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":197,
+                        "PostId":4728
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-69.2129797,-16.0181291]},"properties":{
+                        "Title":"Lake Titicaca",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":197,
+                        "PostId":4724
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-68.1414641,-16.4962053]},"properties":{
+                        "Title":"La Paz",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":202,
+                        "PostId":4709
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-66.1569309,-17.3881007]},"properties":{
+                        "Title":"Cochabamba",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":207,
+                        "PostId":4563
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-65.3446053,-17.9439096]},"properties":{
+                        "Title":"Mizque",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":211,
+                        "PostId":4482
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-65.2597456,-19.0475175]},"properties":{
+                        "Title":"Sucre",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":229,
+                        "PostId":4396
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-65.6018525,-22.1070888]},"properties":{
+                        "Title":"La Quiaca",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":231,
+                        "PostId":4359
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-65.3985518,-24.1677456]},"properties":{
+                        "Title":"Jujuy",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":231,
+                        "PostId":4351
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-68.9918165,-33.0387401]},"properties":{
+                        "Title":"Mendoza",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":231,
+                        "PostId":4341
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-70.6335135,-33.4320576]},"properties":{
+                        "Title":"Santiago",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":241,
+                        "PostId":4326
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-72.1227414,-36.607668]},"properties":{
+                        "Title":"Chillán",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":244,
+                        "PostId":4306
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-71.983528,-39.538345]},"properties":{
+                        "Title":"Coñaripe",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":247,
+                        "PostId":4303
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-72.3781807,-38.239187]},"properties":{
+                        "Title":"Victoria",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":253,
+                        "PostId":4230
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-72.1992417,-40.262803]},"properties":{
+                        "Title":"Lago Ranco",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":267,
+                        "PostId":4170
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-72.98622,-51.0936]},"properties":{
+                        "Title":"Torres del Paine",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":274,
+                        "PostId":4114
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-72.5068,-51.7269]},"properties":{
+                        "Title":"Puerto Natales",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":274,
+                        "PostId":4096
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-72.954456,-41.4672574]},"properties":{
+                        "Title":"Puerto Montt",
+                        "Scale":"All",
+                        "Marker":"hidden",
+                        "DaysSince":274,
+                        "PostId":4305
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-71.0097898,-52.7600548]},"properties":{
+                        "Title":"North of Punta Arenas (waypoint)",
+                        "Scale":"All",
+                        "Marker":"hidden",
+                        "DaysSince":281,
+                        "PostId":4314
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-69.6679045,-52.4259726]},"properties":{
+                        "Title":"Straight of Magellan Crossing (Waypoint)",
+                        "Scale":"All",
+                        "Marker":"hidden",
+                        "DaysSince":281,
+                        "PostId":4313
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-67.1937006,-54.5086812]},"properties":{
+                        "Title":"Southeast Tierra del Fuego (waypoint)",
+                        "Scale":"All",
+                        "Marker":"hidden",
+                        "DaysSince":281,
+                        "PostId":4312
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-70.9763074,-53.1417468]},"properties":{
+                        "Title":"Punta Arenas",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":281,
+                        "PostId":4047
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-68.3728428,-54.806843]},"properties":{
+                        "Title":"Ushuaia",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":283,
+                        "PostId":4045
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-58.3845453,-34.5885318]},"properties":{
+                        "Title":"Buenos Aires (pass through)",
+                        "Scale":"All",
+                        "Marker":"hidden",
+                        "DaysSince":285,
+                        "PostId":5834
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-57.877675,-34.4486388]},"properties":{
+                        "Title":"Colonia",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":286,
+                        "PostId":5833
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-56.2073704,-34.9064641]},"properties":{
+                        "Title":"Montevideo",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":286,
+                        "PostId":5816
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-54.2569148,-34.650782]},"properties":{
+                        "Title":"La Paloma",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":293,
+                        "PostId":3918
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-53.8052156,-34.3993647]},"properties":{
+                        "Title":"Cabo Polonio",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":295,
+                        "PostId":5832
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-59.5848706,-37.4090109]},"properties":{
+                        "Title":"Quinta Esencia",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":302,
+                        "PostId":3886
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-57.7653494,-38.0174516]},"properties":{
+                        "Title":"Mar del Plata",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":304,
+                        "PostId":5835
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-58.3790128,-34.6225422]},"properties":{
+                        "Title":"Buenos Aires",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":318,
+                        "PostId":3759
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-54.4570243,-25.690154]},"properties":{
+                        "Title":"Iguazu Falls",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":323,
+                        "PostId":3758
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-44.8415257,-23.3770123]},"properties":{
+                        "Title":"Picinguaba (Ubatuba)",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":326,
+                        "PostId":3694
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-42.587276,-22.317025]},"properties":{
+                        "Title":"Eco Caminhos",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":339,
+                        "PostId":3678
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-44.7421862,-23.2175757]},"properties":{
+                        "Title":"Paraty",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":391,
+                        "PostId":3450
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-42.996738,-22.3839212]},"properties":{
+                        "Title":"Teresópolis",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":428,
+                        "PostId":3210
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-43.1861295,-22.9581286]},"properties":{
+                        "Title":"Rio de Janeiro",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":448,
+                        "PostId":3078
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-9.1511057,38.7159012]},"properties":{
+                        "Title":"Lisbon",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":1353,
+                        "PostId":2067
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[1.0660903,41.9268634]},"properties":{
+                        "Title":"Catalonia",
+                        "Scale":"Zoomed-Out",
+                        "Marker":"red",
+                        "DaysSince":1722,
+                        "PostId":1730
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[114.1283708,22.2977962]},"properties":{
+                        "Title":"Hong Kong",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":2393,
+                        "PostId":2068
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[116.4135,-8.4692]},"properties":{
+                        "Title":"Tetebatu (Lombok)",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":2419,
+                        "PostId":800
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-83.5082817,10.5445634]},"properties":{
+                        "Title":"Tortuguero",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":2871,
+                        "PostId":5797
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-84.6506881,10.4699401]},"properties":{
+                        "Title":"Arenal",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":2877,
+                        "PostId":5781
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-85.8167635,10.400021]},"properties":{
+                        "Title":"Playa Conchal",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":2879,
+                        "PostId":5758
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-75.1603247,6.2311428]},"properties":{
+                        "Title":"Guatapé",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":3694,
+                        "PostId":1873
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-75.6345031,6.2456371]},"properties":{
+                        "Title":"Medellin",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":3697,
+                        "PostId":1872
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-75.578566,10.4001911]},"properties":{
+                        "Title":"Cartagena",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":3704,
+                        "PostId":1840
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[110.5090635,29.1157725]},"properties":{
+                        "Title":"Zhangjiajie",
+                        "Scale":"All",
+                        "Marker":"red",
+                        "DaysSince":4478,
+                        "PostId":1169
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[10.2723847,43.6696805]},"properties":{
+                        "Title":"Tuscany",
+                        "Scale":"Zoomed-Out",
+                        "Marker":"red",
+                        "DaysSince":4873,
+                        "PostId":1769
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[-5.6674263,37.3087566]},"properties":{
+                        "Title":"Andalucía",
+                        "Scale":"Zoomed-Out",
+                        "Marker":"red",
+                        "DaysSince":4877,
+                        "PostId":1670
+                    }},{ "type" : "Feature", "geometry": {"type":"Point","coordinates":[128.1385985,34.856084]},"properties":{
+                        "Title":"South Korea",
+                        "Scale":"Zoomed-Out",
+                        "Marker":"red",
+                        "DaysSince":5606,
+                        "PostId":1603
+                    }}]}

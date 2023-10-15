@@ -98,6 +98,7 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
+              "src/assets/locations",
               {
                 "glob": "**/*",
                 "input": "node_modules/@arcgis/core/assets",
@@ -136,7 +137,8 @@
               "sourceMap": true,
               "namedChunks": true,
               "assets": [
-                "src/assets"
+                "src/assets",
+                "src/assets/locations"
               ]
             }
           },
@@ -170,6 +172,7 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
+              "src/assets/locations",
               {
                 "glob": "**/*",
                 "input": "node_modules/@arcgis/core/assets",

@@ -1,6 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import GeoJSONLayer from '@arcgis/core/layers/GeoJSONLayer';
-import FeatureLayer from '@arcgis/core/layers/FeatureLayer';
 import TileLayer from '@arcgis/core/layers/TileLayer';
 import Map from '@arcgis/core/Map';
 import MapView from '@arcgis/core/views/MapView';
@@ -11,8 +10,8 @@ import LabelClass from '@arcgis/core/layers/support/LabelClass';
 import Home from "@arcgis/core/widgets/Home";
 import { ActivatedRoute } from '@angular/router';
 
-const pinsCache: string = "https://slowcamino.com/travel-map/assets/server-php/cache_pins.php";
-const linesCache: string = "https://slowcamino.com/travel-map/assets/server-php/cache_connections.php";
+const pinsCache: string = "./assets/layers/cache_pins.json";
+const linesCache: string = "./assets/layers/cache_connections.json";
 
 const pinsLive: string = "https://slowcamino.com/travel-map/assets/server-php/pins.php";
 const linesLive: string = "https://slowcamino.com/travel-map/assets/server-php/connections.php";
@@ -53,7 +52,7 @@ export class MainComponent implements OnInit, AfterViewInit {
 
   ResolveLayerURLS() {
     //Live version lets us see changes before the nightly cache update.
-    if (this.router.snapshot.queryParams["live"]) {
+    if (this.router.snapshot.queryParams["live"] && false) {
       this.pinsUrl = pinsLive;
       this.linesUrl = linesLive;
     } else {

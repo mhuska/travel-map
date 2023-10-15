@@ -2,7 +2,7 @@ import { IGraphic } from "./graphic.model";
 import { IWPPost } from "./post.model";
 import { HttpClient } from '@angular/common/http';
 
-const locationUrl: string = "https://slowcamino.com/travel-map/assets/server-php/cache_locationinfo.php";
+const locationUrl: string = "./assets/locations/";
 
 export class MapLocation {
 
@@ -40,7 +40,11 @@ export class MapLocation {
             responseType: <"json">"json",
         };
 
-        this.http.get(locationUrl + "?id=" + this.PostId.toString(), opt)
+        let url = locationUrl + this.PostId.toString() + ".json"
+
+        console.log(url)
+        
+        this.http.get(url, opt)
             .subscribe({
                 next: (res) => {
                     let result: any = res.body;
