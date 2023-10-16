@@ -42,13 +42,20 @@ export class MapLocation {
 
         let url = locationUrl + this.PostId.toString() + ".json"
 
-        console.log(url)
         
         this.http.get(url, opt)
             .subscribe({
                 next: (res) => {
                     let result: any = res.body;
-                    this.Articles = result.Articles ? JSON.parse(result.Articles) : [];
+                    this.Articles = [];
+                    try {
+                        if (result.Articles) {
+                            this.Articles = JSON.parse(result.Articles);
+                        } 
+                    } catch (err) {
+                        console.log(result.Articles);
+                    }
+                    
                     this.Gallery = result.Gallery ? result.Gallery : [];
                     this.FlyTo = result.FlyTo == 1 ? true : false;
                     this.Content = result.Content;

@@ -49,10 +49,11 @@
              
              //Get the Post Info
              $the_post = get_post( $post_id ); 
-             $title = $the_post->post_title;
+             $title = str_replace('"', "'", $the_post->post_title);
              $date = $the_post->post_date;
              $url = get_permalink($the_post);
-             $excerpt = $the_post->post_excerpt;
+             $excerpt = str_replace('"', "'", $the_post->post_excerpt);
+ 
  
              //add the comma between items
              if ($i > 1) {
