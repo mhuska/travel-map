@@ -10,8 +10,8 @@ import LabelClass from '@arcgis/core/layers/support/LabelClass';
 import Home from "@arcgis/core/widgets/Home";
 import { ActivatedRoute } from '@angular/router';
 
-const pinsCache: string = "./assets/layers/cache_pins.json";
-const linesCache: string = "./assets/layers/cache_connections.json";
+const pinsCache: string = "https://slowcamino.com/travel-map/assets/server-php/cache_pins.php";
+const linesCache: string = "https://slowcamino.com/travel-map/assets/server-php/cache_connections.php";
 
 const pinsLive: string = "https://slowcamino.com/travel-map/assets/server-php/pins.php";
 const linesLive: string = "https://slowcamino.com/travel-map/assets/server-php/connections.php";
@@ -26,8 +26,8 @@ const LAYER_SCALE_BREAKPOINT: number = 9245000;
 })
 export class MainComponent implements OnInit, AfterViewInit {
 
-  private pinsUrl: string = pinsCache;
-  private linesUrl: string = linesCache;
+  private pinsUrl: string = pinsLive;
+  private linesUrl: string = linesLive;
 
   get content(): MapLocation {
     return this.store.CurrentLocation;
@@ -52,13 +52,13 @@ export class MainComponent implements OnInit, AfterViewInit {
 
   ResolveLayerURLS() {
     //Live version lets us see changes before the nightly cache update.
-    if (this.router.snapshot.queryParams["live"] && false) {
+    //if (this.router.snapshot.queryParams["live"] && false) {
       this.pinsUrl = pinsLive;
       this.linesUrl = linesLive;
-    } else {
-      this.pinsUrl = pinsCache;
-      this.linesUrl = linesCache;
-    }
+    //} else {
+     // this.pinsUrl = pinsCache;
+     // this.linesUrl = linesCache;
+    //}
   }
 
   LoadMap() {
@@ -292,14 +292,14 @@ export class MainComponent implements OnInit, AfterViewInit {
     const x_5_url = "./assets/symbols/pirate-x-5b.png";
 
     const dateConfig = [
-      { days: 14, marker: "x-5" },
-      { days: 45, marker: "x-4" },
-      { days: 90, marker: "x-3" },
+      { days: 120, marker: "x-1" },
       { days: 180, marker: "x-2" },
-      { days: 365, marker: "x-1" }
+      { days: 240, marker: "x-3" },
+      { days: 300, marker: "x-4" },
+      { days: 365, marker: "x-5" }
     ]
 
-    let dateExp: string = "When(" + dateConfig.map(c => `$feature.DaysSince < ${c.days}, '${c.marker}'`).join() + ", 'x-1')";
+    let dateExp: string = "When(" + dateConfig.map(c => `$feature.GapYearDay < ${c.days}, '${c.marker}'`).join() + ", 'x-5')";
     let markerTypeExp: string = `When($feature.Marker=='red', ${dateExp}, $feature.Marker)`;
     let expression;
     if (mode == "ZoomedIn") {
@@ -399,8 +399,8 @@ export class MainComponent implements OnInit, AfterViewInit {
   GetLineRenderer(travelMode: "flight" | "land"):any {
     
     let exp = travelMode == "flight" ?
-        `When(Find("Flight",$feature.TravelMode)==-1, -1, $feature.DaysSince)` :
-        `When(Find("Flight",$feature.TravelMode)==-1, $feature.DaysSince, -1)`;
+        `When(Find("Flight",$feature.TravelMode)==-1, -1, $feature.GapYearDay)` :
+        `When(Find("Flight",$feature.TravelMode)==-1, $feature.GapYearDay, -1)`;
 
     return {
       type: "simple",
@@ -424,11 +424,11 @@ export class MainComponent implements OnInit, AfterViewInit {
               color: "#a30707", 
             },
             {
-              value: 60,
+              value: 180,
               color: "#ff0000",
             },
             {
-              value: 180, 
+              value: 300, 
               color: "#F8D1CD" , 
             }
           ]

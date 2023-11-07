@@ -12,7 +12,8 @@
     //Create the JSON
     header('Content-Type: application/geo+json');
     header("Access-Control-Allow-Origin: *");
-    echo BuildJsonLayer("Pin");
+    $payload = BuildJsonLayer("Pin");
     http_response_code(200);
+    echo $payload;
     
 ?>

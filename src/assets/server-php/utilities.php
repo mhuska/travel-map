@@ -1,7 +1,7 @@
 <?php
 
     function GetBaseURL() {
-        $var = "/home/wtk3vlq0kjjx/public_html/slowcamino.com";
+        $var = "/var/www/html/slowcamino.com";
         return $var;
     }
  
