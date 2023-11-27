@@ -37,12 +37,19 @@
                     } else {
                         $feature = "";
                     }
+
+                    $length = 1;
+                    if ((int)GetMeta("length_days") > 0) {
+                        $length = GetMeta("length_days");
+                    }
+
                     $feature = $feature.'{ "type" : "Feature", "geometry": {"type":"Point","coordinates":['.GetMeta("longitude").','.GetMeta("latitude").']},';
                     $feature = $feature.
                     '"properties":{
                         "Title":"'.get_the_title().'",
                         "Scale":"'.GetMeta("scale_dependency").'",
                         "Marker":"'.GetMeta("marker_type").'",
+                        "Length":'.$length.',
                         "GapYearDay":'.date_diff(date_create("2022-07-01"), date_create(get_the_date()))->format("%a").',
                         "DaysSince":'.date_diff(date_create(get_the_date()), new DateTime())->format("%a").',
                         "PostId":'.get_the_ID().'

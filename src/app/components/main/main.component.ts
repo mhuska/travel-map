@@ -1,4 +1,12 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+
+/*
+Icon Attribution
+<a href="https://www.flaticon.com/free-icons/train" title="train icons">Train icons created by Slidicon - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/summer" title="summer icons">Summer icons created by Smashicons - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/penguin" title="penguin icons">Penguin icons created by Freepik - Flaticon</a>
+*/
+
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import GeoJSONLayer from '@arcgis/core/layers/GeoJSONLayer';
 import TileLayer from '@arcgis/core/layers/TileLayer';
 import Map from '@arcgis/core/Map';
@@ -28,6 +36,8 @@ export class MainComponent implements OnInit, AfterViewInit {
 
   private pinsUrl: string = pinsLive;
   private linesUrl: string = linesLive;
+
+  @ViewChild("infoCard") infoCard: ElementRef;
 
   get content(): MapLocation {
     return this.store.CurrentLocation;
@@ -148,28 +158,6 @@ export class MainComponent implements OnInit, AfterViewInit {
       }
     });
 
-    const ConnectionLabels = new LabelClass({
-      // autocasts as new LabelClass()
-      symbol: {
-        type: "text",  // autocasts as new TextSymbol()
-        color: "#ff0000",
-        haloColor: [255, 255, 255, 0.6],
-        haloSize: "2px",
-        font: {
-          family: "Arial",
-          style: "normal",
-          weight: "normal",
-          size: 7,
-        }
-
-      },
-      
-      labelPlacement: <"below-center">"below-center",
-      labelExpressionInfo: {
-        expression: "$feature.TravelMode"
-      }
-    });
-
     //Point Layer
     const pointLayer = new GeoJSONLayer({
       url: this.pinsUrl,
@@ -272,7 +260,10 @@ export class MainComponent implements OnInit, AfterViewInit {
       goToOverride: () => {
         view.goTo({ target: [0, 0], zoom: 2 }, { duration: 2000 })
       }
-    }), "top-right");
+    }), "top-left");
+
+    //Info Card
+    view.ui.add(this.infoCard.nativeElement, "bottom-right");
 
   }
 
@@ -290,6 +281,9 @@ export class MainComponent implements OnInit, AfterViewInit {
     const x_3_url = "./assets/symbols/pirate-x-3b.png";
     const x_4_url = "./assets/symbols/pirate-x-4b.png";
     const x_5_url = "./assets/symbols/pirate-x-5b.png";
+
+    const train_url = "./assets/symbols/train.png";
+    const beach_url = "./assets/symbols/beach.png";
 
     const dateConfig = [
       { days: 120, marker: "x-1" },
@@ -318,8 +312,7 @@ export class MainComponent implements OnInit, AfterViewInit {
             width: 0.5, color: [0, 0, 0, 0]
           }
         }
-      }
-      , 
+      }, 
       {
         value: "hidden",
         symbol: {
@@ -330,9 +323,25 @@ export class MainComponent implements OnInit, AfterViewInit {
           }
         },
         label: "Red"
-      }
-      ,
-      {
+      } ,{
+        value: "train",
+        symbol: {
+          type: "picture-marker",
+          url: train_url,
+          width: marker_size,
+          height: marker_size,
+        },
+        label: "Train"
+      } ,{
+        value: "beach",
+        symbol: {
+          type: "picture-marker",
+          url: beach_url,
+          width: marker_size,
+          height: marker_size,
+        },
+        label: "Beach"
+      }, {
         value: "x-1",
         symbol: {
           type: "picture-marker",
@@ -393,6 +402,30 @@ export class MainComponent implements OnInit, AfterViewInit {
         height: marker_size,
       },
       uniqueValueInfos: uniqueValueInfos,
+      visualVariables: [
+        {
+          type: "size",
+          field: "Length",
+          stops: [     
+            {
+              value: 4,
+              size: 18,
+            },
+            {
+              value: 7,
+              size: 22,
+            },
+            {
+              value: 14,
+              size: 32,
+            },
+            {
+              value: 21,
+              size: 44,
+            },
+          ]
+        }
+      ]
     };
   }
 

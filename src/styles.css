@@ -53,15 +53,8 @@ html {
 .esri-zoom, .esri-home {
   background-color: transparent!important;
   box-shadow: none!important;
-  position: absolute;
   z-index: 2;
-  top: 30px;
 }
-
-.esri-home {
-  right: 10px;
-}
-
 
 
 .esri-zoom .esri-widget--button, .esri-home.esri-widget--button {
