@@ -76,6 +76,14 @@
     font-size: 1.5em;
 }
 
+/* Hide when the screen gets too small*/
+@media only screen and (max-width: 800px)
+{
+    .info-section {
+        display: none;
+    }
+}
+
 @media only screen and (max-width: 668px) {
     .img-cutout {
         display: none;

@@ -1,10 +1,4 @@
 
-/*
-Icon Attribution
-<a href="https://www.flaticon.com/free-icons/train" title="train icons">Train icons created by Slidicon - Flaticon</a>
-<a href="https://www.flaticon.com/free-icons/summer" title="summer icons">Summer icons created by Smashicons - Flaticon</a>
-<a href="https://www.flaticon.com/free-icons/penguin" title="penguin icons">Penguin icons created by Freepik - Flaticon</a>
-*/
 
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import GeoJSONLayer from '@arcgis/core/layers/GeoJSONLayer';
@@ -77,6 +71,7 @@ export class MainComponent implements OnInit, AfterViewInit {
     this.ResolveLayerURLS();
 
     //Basmap
+    
     let basemap1 = new Basemap({
       baseLayers: [
         new TileLayer({
@@ -92,6 +87,7 @@ export class MainComponent implements OnInit, AfterViewInit {
       id: "basemap"
     });
 
+    /*
     let basemap2 = new Basemap({
       baseLayers: [
         new TileLayer({
@@ -105,7 +101,9 @@ export class MainComponent implements OnInit, AfterViewInit {
       ],
       title: "basemap",
       id: "basemap"
-    });
+    });*/
+
+    let basemap2 = "topo";
 
     //Popup
     const template = {
@@ -275,15 +273,40 @@ export class MainComponent implements OnInit, AfterViewInit {
 
   UpdateRenderer(layer: any, mode: "ZoomedIn" | "ZoomedOut") {
 
-    const marker_size = "26px"; // mode=="ZoomedIn" ? "42px" : "26px";
+    const marker_size = "18px"; // mode=="ZoomedIn" ? "42px" : "26px";
+    const picture_size = "28px";
+
     const x_1_url = "./assets/symbols/pirate-x-1b.png";
     const x_2_url = "./assets/symbols/pirate-x-2b.png";
     const x_3_url = "./assets/symbols/pirate-x-3b.png";
     const x_4_url = "./assets/symbols/pirate-x-4b.png";
     const x_5_url = "./assets/symbols/pirate-x-5b.png";
+    
+    /*
+Icon Attribution
+<a href="https://www.flaticon.com/free-icons/train" title="train icons">Train icons created by Slidicon - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/summer" title="summer icons">Summer icons created by Smashicons - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/penguin" title="penguin icons">Penguin icons created by Mihimihi - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/volcano" title="volcano icons">Volcano icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/tree" title="tree icons">Tree icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/hot-spring" title="hot spring icons">Hot spring icons created by SatawatDesign - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/mountain" title="mountain icons">Mountain icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/waterfall" title="waterfall icons">Waterfall icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/coffee" title="coffee icons">Coffee icons created by Freepik - Flaticon</a>
+*/
 
-    const train_url = "./assets/symbols/train.png";
-    const beach_url = "./assets/symbols/beach.png";
+
+    var iconMap = [
+      {value: "train", icon: "./assets/symbols/train.png"},
+      {value: "beach", icon: "./assets/symbols/beach.png"},
+      {value: "penguins", icon: "./assets/symbols/penguin.png"},
+      {value: "volcano", icon: "./assets/symbols/volcano.png"},
+      {value: "farm", icon: "./assets/symbols/farm.png"},
+      {value: "hotspring", icon: "./assets/symbols/hotspring.png"},
+      {value: "mountains", icon: "./assets/symbols/mountains.png"},
+      {value: "waterfall", icon: "./assets/symbols/waterfall.png"},
+      {value: "coffee", icon: "./assets/symbols/coffee.png"},
+    ]
 
     const dateConfig = [
       { days: 120, marker: "x-1" },
@@ -303,6 +326,18 @@ export class MainComponent implements OnInit, AfterViewInit {
     }
 
     let uniqueValueInfos =  [
+      ...iconMap.map(i => {
+        return {
+          value: i.value,
+          symbol: {
+            type: "picture-marker",
+            url: i.icon,
+            width: picture_size,
+            height: picture_size,
+          },
+          label: i.value
+        }
+      }),
       {
         value: "Hidden",
         symbol: {
@@ -312,8 +347,7 @@ export class MainComponent implements OnInit, AfterViewInit {
             width: 0.5, color: [0, 0, 0, 0]
           }
         }
-      }, 
-      {
+      },  {
         value: "hidden",
         symbol: {
           type: "simple-marker",
@@ -322,25 +356,16 @@ export class MainComponent implements OnInit, AfterViewInit {
             width: 0.5, color: [0, 0, 0, 0]
           }
         },
-        label: "Red"
-      } ,{
-        value: "train",
+        label: "hidden"
+      },  {
+        value: "blue",
         symbol: {
           type: "picture-marker",
-          url: train_url,
-          width: marker_size,
-          height: marker_size,
+          url: "./assets/symbols/pirate-x-5.png",
+          width: "16px",
+          height: "16px",
         },
-        label: "Train"
-      } ,{
-        value: "beach",
-        symbol: {
-          type: "picture-marker",
-          url: beach_url,
-          width: marker_size,
-          height: marker_size,
-        },
-        label: "Beach"
+        label: "blue"
       }, {
         value: "x-1",
         symbol: {
@@ -402,6 +427,7 @@ export class MainComponent implements OnInit, AfterViewInit {
         height: marker_size,
       },
       uniqueValueInfos: uniqueValueInfos,
+      /*
       visualVariables: [
         {
           type: "size",
@@ -425,7 +451,7 @@ export class MainComponent implements OnInit, AfterViewInit {
             },
           ]
         }
-      ]
+      ]*/
     };
   }
 
