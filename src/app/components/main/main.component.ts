@@ -285,11 +285,12 @@ export class MainComponent implements OnInit, AfterViewInit {
     /*
 Icon Attribution
 <a href="https://www.flaticon.com/free-icons/train" title="train icons">Train icons created by Slidicon - Flaticon</a>
-<a href="https://www.flaticon.com/free-icons/summer" title="summer icons">Summer icons created by Smashicons - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/parasol" title="parasol icons">Parasol icons created by Smashicons - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/agriculture" title="agriculture icons">Agriculture icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/penguin" title="penguin icons">Penguin icons created by Mihimihi - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/volcano" title="volcano icons">Volcano icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/tree" title="tree icons">Tree icons created by Freepik - Flaticon</a>
-<a href="https://www.flaticon.com/free-icons/hot-spring" title="hot spring icons">Hot spring icons created by SatawatDesign - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/hot-spring" title="hot spring icons">Hot spring icons created by surang - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/mountain" title="mountain icons">Mountain icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/waterfall" title="waterfall icons">Waterfall icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/coffee" title="coffee icons">Coffee icons created by Freepik - Flaticon</a>
@@ -458,8 +459,8 @@ Icon Attribution
   GetLineRenderer(travelMode: "flight" | "land"):any {
     
     let exp = travelMode == "flight" ?
-        `When(Find("Flight",$feature.TravelMode)==-1, -1, $feature.GapYearDay)` :
-        `When(Find("Flight",$feature.TravelMode)==-1, $feature.GapYearDay, -1)`;
+        `When(Find("Flight",$feature.TravelMode)==-1, -1, $feature.GapYearDay < 372, $feature.GapYearDay, -2)` :
+        `When(Find("Flight",$feature.TravelMode)!=-1, -1, $feature.GapYearDay < 372, $feature.GapYearDay, -2)`;
 
     return {
       type: "simple",
@@ -475,20 +476,28 @@ Icon Attribution
           valueExpression: exp,
           stops: [
             {
+              value: -2,
+              color: "#0e8de8",
+            },
+            {
               value: -1,
               color: "transparent",
             },
             {
               value: 0, 
-              color: "#a30707", 
+              color: "#F8D1CD", 
             },
             {
-              value: 180,
+              value: 120, 
+              color: "#F8D1CD", 
+            },
+            {
+              value: 240,
               color: "#ff0000",
             },
             {
-              value: 300, 
-              color: "#F8D1CD" , 
+              value: 360, 
+              color: "#a30707", 
             }
           ]
         }

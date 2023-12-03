@@ -127,7 +127,7 @@
                         }
                         
                         $feature = $feature.'{ "type" : "Feature", "geometry": {"type":"LineString","coordinates":[['.$last["longitude"].','.$last["latitude"].'],['.$value["longitude"].','.$value["latitude"].']]},';
-                        $feature = $feature.'"properties":{ "GapYearDay": '.$last["DaysSince"].', "DaysSince": '.$last["DaysSince"].', "TravelMode": "' . $value["travel_mode"] . '" }}';
+                        $feature = $feature.'"properties":{ "GapYearDay": '.$last["GapYearDay"].', "DaysSince": '.$last["DaysSince"].', "TravelMode": "' . $value["travel_mode"] . '" }}';
                         
                         //concatenate the feature
                         $json = $json.$feature;
