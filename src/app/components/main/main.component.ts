@@ -201,10 +201,10 @@ export class MainComponent implements OnInit, AfterViewInit {
         minZoom: 2,
         rotationEnabled: false,
       },
-      // Disable mouse-wheel and single-touch map navigation.
+      // Disable mouse-wheel and single-touch map navigation. RE-ENABLED
       navigation: {
         //mouseWheelZoomEnabled: false,
-        browserTouchPanEnabled: false
+        browserTouchPanEnabled: true
       },
       container: "map-container",
       popup: {
