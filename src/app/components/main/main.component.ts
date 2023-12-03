@@ -294,6 +294,7 @@ Icon Attribution
 <a href="https://www.flaticon.com/free-icons/mountain" title="mountain icons">Mountain icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/waterfall" title="waterfall icons">Waterfall icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/coffee" title="coffee icons">Coffee icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/rio-de-janeiro" title="rio de janeiro icons">Rio de janeiro icons created by Darius Dan - Flaticon</a>
 */
 
 
@@ -307,6 +308,7 @@ Icon Attribution
       {value: "mountains", icon: "./assets/symbols/mountains.png"},
       {value: "waterfall", icon: "./assets/symbols/waterfall.png"},
       {value: "coffee", icon: "./assets/symbols/coffee.png"},
+      {value: "rio-janeiro", icon: "./assets/symbols/rio-janeiro2.png"},
     ]
 
     const dateConfig = [
