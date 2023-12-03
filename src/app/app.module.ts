@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from '@angular/common';
 
-import { PopoverModule } from 'ngx-bootstrap/popover';
 
 import { SwiperModule } from "swiper/angular";
 import 'swiper/css/bundle';
@@ -34,7 +33,6 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     SharedDataModule.forRoot(),
     RouterModule.forRoot([]),
-    PopoverModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
