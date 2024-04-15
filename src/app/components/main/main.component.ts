@@ -12,8 +12,8 @@ import LabelClass from '@arcgis/core/layers/support/LabelClass';
 import Home from "@arcgis/core/widgets/Home";
 import { ActivatedRoute } from '@angular/router';
 
-const pinsCache: string = "https://slowcamino.com/travel-map/assets/server-php/cache_pins.php";
-const linesCache: string = "https://slowcamino.com/travel-map/assets/server-php/cache_connections.php";
+//const pinsCache: string = "https://slowcamino.com/travel-map/assets/server-php/cache_pins.php";
+//const linesCache: string = "https://slowcamino.com/travel-map/assets/server-php/cache_connections.php";
 
 const pinsLive: string = "https://slowcamino.com/travel-map/assets/server-php/pins.php";
 const linesLive: string = "https://slowcamino.com/travel-map/assets/server-php/connections.php";
@@ -32,6 +32,7 @@ export class MainComponent implements OnInit, AfterViewInit {
   private linesUrl: string = linesLive;
 
   @ViewChild("infoCard") infoCard: ElementRef;
+  @ViewChild("mapViewNode") mapViewNode: ElementRef;
 
   get content(): MapLocation {
     return this.store.CurrentLocation;
@@ -67,11 +68,14 @@ export class MainComponent implements OnInit, AfterViewInit {
 
   LoadMap() {
 
+    if (!this.mapViewNode) return;
+
     //Resolve Layer URLS
     this.ResolveLayerURLS();
 
     //Basmap
     
+    /*
     let basemap1 = new Basemap({
       baseLayers: [
         new TileLayer({
@@ -87,23 +91,9 @@ export class MainComponent implements OnInit, AfterViewInit {
       id: "basemap"
     });
 
-    /*
-    let basemap2 = new Basemap({
-      baseLayers: [
-        new TileLayer({
-          url: "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
-          title: "Basemap"
-        }),
-        new TileLayer({
-          url: "https://server.arcgisonline.com/arcgis/rest/services/Reference/World_Boundaries_and_Places/MapServer",
-          title: "Boundaries"
-        })
-      ],
-      title: "basemap",
-      id: "basemap"
-    });*/
+*/
 
-    let basemap2 = "topo";
+    let basemap2 = "topo-vector";
 
     //Popup
     const template = {
@@ -188,7 +178,7 @@ export class MainComponent implements OnInit, AfterViewInit {
 
     //Map       
     const map = new Map({
-      basemap: <string | Basemap>"satellite",
+      basemap: <string | Basemap>"topo-vector",
       layers: [lineLayerFlights, lineLayerLand, pointLayer]
     });
 
@@ -228,7 +218,7 @@ export class MainComponent implements OnInit, AfterViewInit {
       view.goTo({ target: geometry, zoom: 6 }, { duration: 2000 }) //.then(function () { view.zoom = 6; });
     }
 
-    let _updateBasemap = this.UpdateBasemap;
+    //let _updateBasemap = this.UpdateBasemap;
     let _updateRenderer = this.UpdateRenderer;
 
     //Watch the Scale and change basemap when zoomed in
@@ -238,11 +228,13 @@ export class MainComponent implements OnInit, AfterViewInit {
       //console.log(newScale)
 
       //Change basemaps
+      /*
       if (newScale > MAP_SCALE_BREAKPOINT) { //9245000) {
         _updateBasemap(map, view, basemap1);
       } else {
         _updateBasemap(map, view, basemap2);
       }
+*/
 
       //Change layer renderer
       if (newScale > LAYER_SCALE_BREAKPOINT) {

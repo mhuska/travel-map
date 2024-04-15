@@ -42,30 +42,43 @@ export class MapLocation {
         };
 
         let url = locationUrl + "?id=" + this.PostId.toString();
-
         
         this.http.get(url, opt)
             .subscribe({
                 next: (res) => {
                     let result: any = res.body;
-                    this.Articles = [];
-                    try {
-                        if (result.Articles) {
-                            this.Articles = JSON.parse(result.Articles);
-                        } 
-                    } catch (err) {
-                        console.log(result.Articles);
+                    this.ConsumeData(result);
+
+                },
+                error: (err) => {
+                    if (err.error.Content) {
+                        //Why this happens? I do not know.
+                        let result: any = err.error;
+                        this.ConsumeData(result);
+                    } else {
+                        console.error(err);
                     }
                     
-                    this.Gallery = result.Gallery ? result.Gallery : [];
-                    this.FlyTo = result.FlyTo == 1 ? true : false;
-                    this.Content = result.Content;
-                    this.Visited = result.Visited;
-                    this.Image = result.Image;
-
                 }
             });
 
+    }
+
+    private ConsumeData(result: any) {
+        this.Articles = [];
+        try {
+            if (result.Articles) {
+                this.Articles = JSON.parse(result.Articles);
+            } 
+        } catch (err) {
+            console.log(result.Articles);
+        }
+        
+        this.Gallery = result.Gallery ? result.Gallery : [];
+        this.FlyTo = result.FlyTo == 1 ? true : false;
+        this.Content = result.Content;
+        this.Visited = result.Visited;
+        this.Image = result.Image;
     }
 
     private prop(property: string): string {
